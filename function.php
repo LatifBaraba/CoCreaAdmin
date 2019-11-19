@@ -429,4 +429,30 @@ function editgallery($dt) {
     return mysqli_affected_rows($conn);
 }
 
+function changepass($data) {
+global $conn;
+$id = $_POST["id"];
+
+$password = mysqli_real_escape_string($conn, $data["password"]);
+$password2 = mysqli_real_escape_string($conn, $data["password2"]);
+
+if( $password !== $password2 ) {
+    $_SESSION['passtidaksama']= 1 ;
+    return false;
+    // var_dump($password);
+} else {
+    $password = password_hash($password, PASSWORD_DEFAULT);
+    $query = "UPDATE user SET
+                password = '$password'
+            WHERE id = '$id';
+    ";
+    mysqli_query($conn,$query);
+
+    return mysqli_affected_rows($conn);
+
+}
+
+
+}
+
 ?>

@@ -15,10 +15,6 @@ require'function.php';
 
 $username = query("SELECT * FROM user");
 
-    if(isset($_POST["cari"])){
-        $username = cari($_POST["keyword"]);
-    }
-
 $g = query("SELECT * FROM logo ORDER BY id DESC LIMIT 1");
 
 
@@ -30,7 +26,7 @@ $g = query("SELECT * FROM logo ORDER BY id DESC LIMIT 1");
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CcCreative Admin</title>
+    <title>CoCreative Admin</title>
 
     <!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
@@ -54,7 +50,7 @@ $g = query("SELECT * FROM logo ORDER BY id DESC LIMIT 1");
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                 <a class="navbar-brand href="index-admin.php"><img src="./assets/img/<?= $g[0]['gambar']?>" id="logo" width="50"></a> 
+                 <a class="navbar-brand" href="index-admin.php"><img src="./assets/img/<?= $g[0]['gambar']?>" id="logo" width="50"></a> 
                 <!-- <img src="assets/img/logonew.png" alt="..." class="img-thumbnail"> -->
             </div>
 
@@ -172,15 +168,6 @@ $g = query("SELECT * FROM logo ORDER BY id DESC LIMIT 1");
         
         <a href="adduser.php"><i class="fas fa-plus-square"></i> Add User</a>
         <!-- <input type="button" onclick="location='adduser.html'" class="btn btn-danger"> -->
-        
-        <button type="button" id="formButton">Toggle Form!</button>
-            
-            <form id="form1">
-            <b>First Name:</b> <input type="text" name="firstName">
-            </form>
-
-
-
         </div>
             <!-- /. PAGE INNER  -->
         </div>

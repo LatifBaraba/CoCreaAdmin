@@ -52,6 +52,10 @@ if (isset($_POST["submit"])){
             //      document.location.href = 'edituser.php?id='.$id);
             //       </script>";
         }
+
+        if(changepass($_POST)>0) {
+            $_SESSION['rubahpass']= 1 ;
+        }
         
     }
 ?>
@@ -188,6 +192,22 @@ if (isset($_POST["submit"])){
                  endif; 
                  unset($_SESSION['edited']);
                 ?>
+
+                <?php 
+                if( isset($_SESSION["passtidaksama"]) == 1 ) : ?>
+                <div class="alert alert-danger fade in" role="alert">Password not match !</div>
+                <?php
+                endif; 
+                unset($_SESSION['passtidaksama']);
+                ?>
+
+                <?php 
+                if( isset($_SESSION["rubahpass"]) == 1 ) : ?>
+                <div class="alert alert-danger fade in" role="alert">Change Succes <a href="index-admin.php" class="alert-link">back to Dashboard</a></div>
+                <?php
+                endif; 
+                unset($_SESSION['rubahpass']);
+                ?>
                 
             <form action="" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id" value="<?= $sql["id"];?>">
@@ -254,7 +274,7 @@ if (isset($_POST["submit"])){
                             <input type="password" size="30" name="password2" id="password2" required>
                             </div>
                         </div>
-                    <button class="btn btn-success btn-confirmpass">Confirm Change</button>
+                    <button class="btn btn-success btn-confirmpass" type="submit" name="submit">Confirm Change</button>
                 </div>
             
         </div>
