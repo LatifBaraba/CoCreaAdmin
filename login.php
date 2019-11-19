@@ -17,7 +17,27 @@ if( isset($_POST["login"]) ) {
 	if( mysqli_num_rows($result) === 1 ) {
 		// cek password
         $row = mysqli_fetch_assoc($result);
-        var_dump($row);
+        // var_dump($row);
+		if( password_verify($password, $row["password"]) ) {
+			// set session
+			$_SESSION["login"] = true;
+			header("Location: index-admin.php");
+			exit;
+		}
+	}
+	$error = true;
+}
+
+if( isset($_POST["login"]) ) {
+    $username = $_POST["username"];
+	$password = $_POST["password"];
+    
+    $result = mysqli_query($conn, "SELECT * FROM user WHERE username = '$username'");
+	// cek username
+	if( mysqli_num_rows($result) === 1 ) {
+		// cek password
+        $row = mysqli_fetch_assoc($result);
+        // var_dump($row);
 		if( password_verify($password, $row["password"]) ) {
 			// set session
 			$_SESSION["login"] = true;
@@ -74,7 +94,7 @@ if( isset($_POST["login"]) ) {
                                 <form role="form" action="" method="post" enctype="multipart/form-data">
                                        <br/>
                                        <?php if( isset($error) ) : ?>
-                                                <p style="color: white;">username & password invalid</p>
+                                                <h4 style="color: #5CB85C ; text-align: center;" >Username / Password invalid</h4>
                                                 <?php endif; ?>
                                         <div class="form-group input-group">
                                               

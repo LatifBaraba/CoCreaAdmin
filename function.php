@@ -57,6 +57,8 @@ function adduser($data){
   $email = htmlspecialchars($data["email"]);
   $alamat = htmlspecialchars($data["alamat"]);
   $telepon = htmlspecialchars($data["telepon"]);
+  $password = mysqli_real_escape_string($conn, $data["password"]);
+  $password2 = mysqli_real_escape_string($conn, $data["password2"]);
   
   $result = mysqli_query($conn, "SELECT username FROM user WHERE username = '$username'");
     
@@ -65,13 +67,25 @@ function adduser($data){
         //         alert('Username is not available !')
         //         document.location.href = 'adduser.php';
         //       </script>";
-              
         //       exit();
             $_SESSION['usernamesama']=1;
-            
             return false;
     }
 
+    // cek konfirmasi password
+	if( $password !== $password2 ) {
+		echo "<script>
+				alert('konfirmasi password tidak sesuai!');
+		      </script>";
+        return false;
+        // var_dump($password);
+    }
+    
+	// enkripsi password
+    $password = password_hash($password, PASSWORD_DEFAULT);
+    
+	// tambahkan userbaru ke database
+    // mysqli_query($conn, "INSERT INTO user VALUES('', '$username','$password')");
     // $id = $_POST['id'];
     // cek email validation
     $email  = $_POST['email'];
@@ -94,7 +108,7 @@ function adduser($data){
 
   // query insert data
   $query = "INSERT INTO user VALUES 
-  ('','$username','$email','$alamat','$telepon')";
+  ('','$username','$email','$alamat','$telepon','$password')";
   $simpan = mysqli_query($conn,$query);
   if (!$simpan){        
     $_SESSION['gagaltambah']= 1;    
@@ -121,14 +135,15 @@ function edituser($data) {
     $email = htmlspecialchars($data["email"]);
     $alamat = htmlspecialchars($data["alamat"]);
     $telepon = htmlspecialchars($data["telepon"]);
-    
-    // query insert data
+    $password = mysqli_real_escape_string($conn, $data["password"]);
+
+        // query insert data
     $query = "UPDATE user SET
                 username = '$username',
-               
                 email = '$email',
                 alamat = '$alamat',
-                telepon = '$telepon'
+                telepon = '$telepon',
+                password = '$password'
             WHERE id = '$id';
     ";
     mysqli_query($conn,$query);

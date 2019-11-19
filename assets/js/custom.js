@@ -97,7 +97,10 @@
 /*====================================
            GALLERY UPDATE ON CLICK
         ======================================*/
-
+        $("#more").click(function(e){
+            e.preventDefault();
+            $("#moreField").slideToggle();
+          });
 
 // $("#inputGroupSelect02").change(function() {
 //     var displaylat=$("#inputGroupSelect02 option:selected").text();

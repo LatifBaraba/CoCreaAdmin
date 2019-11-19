@@ -173,6 +173,14 @@ $g = query("SELECT * FROM logo ORDER BY id DESC LIMIT 1");
         <a href="adduser.php"><i class="fas fa-plus-square"></i> Add User</a>
         <!-- <input type="button" onclick="location='adduser.html'" class="btn btn-danger"> -->
         
+        <button type="button" id="formButton">Toggle Form!</button>
+            
+            <form id="form1">
+            <b>First Name:</b> <input type="text" name="firstName">
+            </form>
+
+
+
         </div>
             <!-- /. PAGE INNER  -->
         </div>

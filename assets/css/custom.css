@@ -353,3 +353,20 @@ input[type=text] {
 .footcard {
     margin-bottom: 20px;
 }
+
+.formpass {
+    padding-top: 20px;
+}
+
+.btn-confirmpass {
+    margin-top: 20px;
+}
+
+.form-group input , label{
+    padding: 10px; 
+}
+
+.form-group input {
+    border: 2px;
+    border-bottom: 2px solid #00CA79;
+}

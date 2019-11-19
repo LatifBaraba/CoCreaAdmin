@@ -220,7 +220,29 @@ if (isset($_POST["submit"])){
                         </div>
                     </div>
                     <div class="col-xs-10 col-lg-10">
-                    <input type="text" name="telepon" id="telepon" placeholder="08212445 ..." required>
+                    <input type="text" name="telepon" id="telepon" placeholder="08212445 ...">
+                    </div>
+                </div>          
+
+                <div class="row">
+                    <div class="col-xs-2 col-lg-2">
+                        <div class="form-group">
+                        <label for="telepon">Password : </label>
+                        </div>
+                    </div>
+                    <div class="col-xs-10 col-lg-10">
+                    <input type="password" name="password" id="password" placeholder="Password here" required>
+                    </div>
+                </div>                    
+
+                <div class="row">
+                    <div class="col-xs-2 col-lg-2">
+                        <div class="form-group">
+                        <label for="telepon">Confirm Password : </label>
+                        </div>
+                    </div>
+                    <div class="col-xs-10 col-lg-10">
+                    <input type="password" name="password2" id="password2" placeholder="Password here" required>
                     </div>
                 </div>                    
      

@@ -231,9 +231,34 @@ if (isset($_POST["submit"])){
                 <input type="text" size="30" name="telepon" id="telepon" required value="<?= $sql["telepon"];?>">
                 </div>
             </div>
-            <button class="btn btn-success"type="submit" name="submit">Edit Data</button>
-            </form>
-
+            <button class="btn btn-success" type="submit" name="submit">Edit Data</button>
+            
+            <button id="more" class="btn btn-info">Change Password</button>
+            
+            <div class="formpass">
+            <div id="moreField" style="display:none;">
+                <div class="form-group">
+                    <div class="row">
+                            <div class="col-xs-2">
+                                    <label for="password">New Password : </label>
+                            </div>
+                            <div class="col-xs-1">
+                            <input type="password" size="30" name="password" id="password" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2">
+                                    <label for="password">Confirm Password : </label>
+                            </div>
+                            <div class="col-xs-1">
+                            <input type="password" size="30" name="password2" id="password2" required>
+                            </div>
+                        </div>
+                    <button class="btn btn-success btn-confirmpass">Confirm Change</button>
+                </div>
+            
+        </div>
+      </div>
             </div>
             <!-- /. PAGE INNER  -->
         </div>
