@@ -6,6 +6,11 @@ if(!isset($_SESSION["login"])){
     exit;
 }
 
+if(isset($_SESSION["userlogin"])){
+    header("Location: index-user.php");
+    exit;
+}
+
 require 'function.php';
 
 $g = query("SELECT * FROM logo ORDER BY id DESC LIMIT 1");
@@ -63,8 +68,15 @@ if (isset($_POST["submit"])){
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index-admin.php"><img src="./assets/img/<?= $g[0]['gambar']?>" id="logo" width="50"></a>  
-                <!-- <img src="assets/img/logonew.png" alt="..." class="img-thumbnail"> -->
+
+                <?php if(isset($_SESSION['userlogin'])){ ?>
+                    <a class='navbar-brand' href='index-user.php'><img src='./assets/img/<?php echo $g[0]['gambar']?>' id='logo' width='50'></a>
+                <?php }?> 
+
+                <?php if(!isset($_SESSION['userlogin'])){ ?>
+                    <a class='navbar-brand' href='index-admin.php'><img src='./assets/img/<?php echo $g[0]['gambar']?>' id='logo' width='50'></a>
+                <?php }?>
+                
             </div>
 
             <div class="header-right">
@@ -77,9 +89,17 @@ if (isset($_POST["submit"])){
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-                    <li>
-                        <a class="active-menu" href="index-admin.php"><i class="fa fa-dashboard "></i>Dashboard</a>
-                    </li>
+
+                    <?php if(isset($_SESSION['userlogin']))
+                    echo "<li>
+                    <a class='active-menu' href='index-user.php'><i class='fa fa-dashboard'></i>Dashboard</a>
+                    </li>"; ?>
+
+                    <?php if(!isset($_SESSION['userlogin']))
+                    echo "<li>
+                    <a class='active-menu' href='index-admin.php'><i class='fa fa-dashboard'></i>Dashboard</a>
+                    </li>"; ?>
+
                     <li>
                         <a href="#"><i class="fa fa-slideshare "></i>Slider Screen<span class="fa arrow"></span></a>
                          <ul class="nav nav-second-level">

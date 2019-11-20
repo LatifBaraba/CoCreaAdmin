@@ -383,3 +383,19 @@ input[type=text] {
     border: 2px;
     border-bottom: 2px solid #00CA79;
 }
+
+.page-user h2{
+    font-style: italic;
+    text-align: center;
+    font-weight: 400;
+    padding: 10px;
+    color: #00CA79;
+}
+
+.page-user h1{
+    text-align: center;
+    font-weight: 1000;
+    font-size: 40px;
+    padding-bottom: 20px;
+    color: black;
+}

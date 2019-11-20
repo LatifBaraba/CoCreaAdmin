@@ -40,8 +40,9 @@ if( isset($_POST["login"]) ) {
         // var_dump($row);
 		if( password_verify($password, $row["password"]) ) {
 			// set session
-			$_SESSION["login"] = true;
-			header("Location: index-admin.php");
+            $_SESSION["login"] = true;
+            $_SESSION["userlogin"]= true;
+			header("Location: index-user.php");
 			exit;
 		}
 	}

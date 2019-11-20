@@ -83,9 +83,17 @@ if (isset($_POST["submit"])){
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-                    <li>
-                        <a class="active-menu" href="index-admin.php"><i class="fa fa-dashboard "></i>Dashboard</a>
-                    </li>
+
+                    <?php if(isset($_SESSION['userlogin']))
+                    echo "<li>
+                    <a class='active-menu' href='index-user.php'><i class='fa fa-dashboard'></i>Dashboard</a>
+                    </li>"; ?>
+
+                    <?php if(!isset($_SESSION['userlogin']))
+                    echo "<li>
+                    <a class='active-menu' href='index-admin.php'><i class='fa fa-dashboard'></i>Dashboard</a>
+                    </li>"; ?>
+                    
                     <li>
                         <a href="#"><i class="fa fa-slideshare "></i>Slider Screen<span class="fa arrow"></span></a>
                          <ul class="nav nav-second-level">

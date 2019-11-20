@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 session_start();
 
@@ -7,26 +7,22 @@ if(!isset($_SESSION["login"])){
     exit;
 }
 
-require 'function.php';
+if(!isset($_SESSION["userlogin"])){
+    header("Location: index-admin.php");
+    exit;
+}
+
+// if(isset($_POST['add'])){
+//     header("Location: adduser.php");
+//     exit;
+// }
+require'function.php';
+
+$username = query("SELECT * FROM user");
 
 $g = query("SELECT * FROM logo ORDER BY id DESC LIMIT 1");
-if (isset($_POST["submit"])){
 
-        // cek apakah data ditambahkan atau tidak
-        if(tambah($_POST)> 0){
-            // echo "<script>
-            //      alert('data berhasil ditambahkan!');
-            //      document.location.href = 'index-admin.php';
-            //      </script>";
-            $_SESSION["logoberhasil"] = 1;
-        }else{
-            // echo "<script>
-            //      alert('data gagal ditambahkan!');
-            //      document.location.href = 'index-admin.php';
-            //       </script>";
-            // $_SESSION["logogagal"] = 1;
-        }
-    }
+
 ?>
 
 
@@ -35,7 +31,7 @@ if (isset($_POST["submit"])){
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CcCreative Admin</title>
+    <title>CoCreative Admin</title>
 
     <!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
@@ -59,19 +55,19 @@ if (isset($_POST["submit"])){
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+
                 <?php if(isset($_SESSION['userlogin'])){ ?>
                     <a class='navbar-brand' href='index-user.php'><img src='./assets/img/<?php echo $g[0]['gambar']?>' id='logo' width='50'></a>
                 <?php }?> 
 
                 <?php if(!isset($_SESSION['userlogin'])){ ?>
                     <a class='navbar-brand' href='index-admin.php'><img src='./assets/img/<?php echo $g[0]['gambar']?>' id='logo' width='50'></a>
-                <?php }?> 
-                
-                <!-- <img src="assets/img/logonew.png" alt="..." class="img-thumbnail"> -->
+                <?php }?>
+
             </div>
 
             <div class="header-right">
-                <h1 class="header-right-tittle">CO CREATIVE ADMIN SITE</h1>
+                <h3 class="header-right-tittle">CO CREATIVE ADMIN SITE</h3>
             </div>
         </nav>
 
@@ -112,7 +108,7 @@ if (isset($_POST["submit"])){
                         <a href="#"><i class="fa fa-camera "></i>Gallery <span class="fa arrow"></span></a>
                          <ul class="nav nav-second-level">
                             <li>
-                                <a href="gallery.php"><i class="fa fa-picture-o"></i>Update Album 'Our Space'</a>
+                                <a href="gallery.php"><i class="fa fa-picture-o"></i>Update Album</a>
                             </li>
                             <li>
                                <a href="profilepicture.html"><i class="far fa-user-circle"></i>Update Your Profile Picture</a> 
@@ -120,6 +116,7 @@ if (isset($_POST["submit"])){
                             </li> 
                         </ul>
                     </li>
+                    
                     <?php if(!isset($_SESSION['login']))
                     echo " <li>
                     <a href='login.php'><i class='fa fa-sign-in'></i>Login Page</a>
@@ -129,114 +126,32 @@ if (isset($_POST["submit"])){
                     <?php if(isset($_SESSION['login']))
                     echo "<li>
                     <a href='logout.php'><i class='fa fa-sign-out'></i>Log out</a>
-                    </li>"; ?>
+                    </li>"; ?>          
+                    
                 </ul>
             </div>
         </nav>
        
        
         <!-- /. NAV SIDE  -->
-
-
         <div id="page-wrapper">
             <div id="page-inner">
+                <div class="page-user">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="page-head-line">UPDATE LOGO SECTION </h1>
+                        <!-- <h1 class="page-head-line">CO CREATIVE ADMIN SITE</h1> -->
+                        <h2>Welcome To</h2><h1> Co Creative</h1> <h2>Admin Site</h2>
                     </div>
-                </div>
-                <!-- /. ROW  -->
-                <!-- UPDATE LOGO -->
-
-            <div class="container">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-
-                    <?php 
-                    if( isset($_SESSION["logoberhasil"]) == 1 ) : ?>
-                        <div class="alert alert-success" role="alert">Success added logo <a href="index-admin.php" class="alert-link">back to Dashboard</a>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>    
-                        </div>
-                <?php
-                endif; 
-                    unset($_SESSION['logoberhasil']);
-                ?>
-                
-                <?php 
-                    if( isset($_SESSION["logogagal"]) == 1 ) : ?>
-                        <div class="alert alert-danger" role="alert">Failed added logo
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>    
-                        </div>
-                <?php
-                endif; 
-                    unset($_SESSION['logogagal']);
-                ?>
-
-                <?php 
-                    if( isset($_SESSION["uploadbukangambar"]) == 1 ) : ?>
-                        <div class="alert alert-danger" role="alert"><strong>Please upload a picture</strong> format (jpg, jpeg or png)
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>    
-                        </div>
-                <?php
-                endif; 
-                    unset($_SESSION['uploadbukangambar']);
-                ?>
-                
-
-                <?php 
-                    if( isset($_SESSION["uploadgambardulu"]) == 1 ) : ?>
-                        <div class="alert alert-danger" role="alert"><strong>Please upload a picture</strong>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>    
-                        </div>
-                <?php
-                endif; 
-                    unset($_SESSION['uploadgambardulu']);
-                ?>
-
-                <?php 
-                    if( isset($_SESSION["logoterlalubesar"]) == 1 ) : ?>
-                        <div class="alert alert-danger" role="alert"><strong>Picture size to large</strong> | under 2mb
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>    
-                        </div>
-                <?php
-                endif; 
-                    unset($_SESSION['logoterlalubesar']);
-                ?>
-                        
-                        <span class="input-group-text">Upload</span>
-                  
-                    </div>    
-                
-                <form action="" enctype="multipart/form-data" method="post">
-
-                <div class="fileUpload btn btn-success">
-                                
-                <input type="file" name="gambar" id="gambar" class="upload" required>
-
-                </div>
-                <button class="btn btn-success" type="submit" name="submit">Input Data</button>
-                </div>
-                <br>
-                <p style="font-style: italic; color: gray;">Picture size : under 2mb</p>
-                </form>
-
-         <!-- SAMPE SINI -->
+                </div> 
+            </div>
         </div>
             <!-- /. PAGE INNER  -->
         </div>
         <!-- /. PAGE WRAPPER  -->
+  
     </div>
     <!-- /. WRAPPER  -->
+
 
     <div id="footer-sec">
         &copy; 2014 YourCompany | Design By : <a href="http://www.binarytheme.com/" target="_blank">BinaryTheme.com</a>
