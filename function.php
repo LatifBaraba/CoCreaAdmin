@@ -442,6 +442,7 @@ if( $password !== $password2 ) {
     // var_dump($password);
 } else {
     $password = password_hash($password, PASSWORD_DEFAULT);
+    
     $query = "UPDATE user SET
                 password = '$password'
             WHERE id = '$id';

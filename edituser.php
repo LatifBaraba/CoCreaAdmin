@@ -51,13 +51,15 @@ if (isset($_POST["submit"])){
             //      alert('Changes Failed');
             //      document.location.href = 'edituser.php?id='.$id);
             //       </script>";
-        }
-
-        if(changepass($_POST)>0) {
-            $_SESSION['rubahpass']= 1 ;
-        }
-        
+        } 
     }
+
+if (isset($_POST['confirm'])) {
+    # Publish-button was clicked
+    if(changepass($_POST)>0) {
+        $_SESSION['rubahpass']= 1 ;
+    }
+}
 ?>
 
 
@@ -195,7 +197,12 @@ if (isset($_POST["submit"])){
 
                 <?php 
                 if( isset($_SESSION["passtidaksama"]) == 1 ) : ?>
-                <div class="alert alert-danger fade in" role="alert">Password not match !</div>
+                <div class="alert alert-danger fade in" role="alert">
+                Password not match !
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
                 <?php
                 endif; 
                 unset($_SESSION['passtidaksama']);
@@ -203,7 +210,12 @@ if (isset($_POST["submit"])){
 
                 <?php 
                 if( isset($_SESSION["rubahpass"]) == 1 ) : ?>
-                <div class="alert alert-danger fade in" role="alert">Change Succes <a href="index-admin.php" class="alert-link">back to Dashboard</a></div>
+                <div class="alert alert-success fade in" role="alert">
+                    Change Success <a href="index-admin.php" class="alert-link">back to Dashboard</a>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
                 <?php
                 endif; 
                 unset($_SESSION['rubahpass']);
@@ -263,7 +275,7 @@ if (isset($_POST["submit"])){
                                     <label for="password">New Password : </label>
                             </div>
                             <div class="col-xs-1">
-                            <input type="password" size="30" name="password" id="password" required>
+                            <input type="password" size="30" name="password" id="password" placeholder="New Password" >
                             </div>
                         </div>
                         <div class="row">
@@ -271,10 +283,10 @@ if (isset($_POST["submit"])){
                                     <label for="password">Confirm Password : </label>
                             </div>
                             <div class="col-xs-1">
-                            <input type="password" size="30" name="password2" id="password2" required>
+                            <input type="password" size="30" name="password2" id="password2" placeholder="Confirm Password" >
                             </div>
                         </div>
-                    <button class="btn btn-success btn-confirmpass" type="submit" name="submit">Confirm Change</button>
+                    <button class="btn btn-success btn-confirmpass" type="submit" name="confirm" value="confirm">Confirm Change</button>
                 </div>
             
         </div>

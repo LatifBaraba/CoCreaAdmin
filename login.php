@@ -68,7 +68,6 @@ if( isset($_POST["login"]) ) {
 <style>
 .tittle {
     font-size: 50px;
-    
 }
 
 .tittle-login {

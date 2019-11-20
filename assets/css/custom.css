@@ -358,12 +358,25 @@ input[type=text] {
     padding-top: 20px;
 }
 
+.formpass input {
+    color: cornflowerblue;
+}
+
+.formpass input, label {
+    padding-top : 5px;
+}
+
 .btn-confirmpass {
     margin-top: 20px;
 }
 
-.form-group input , label{
-    padding: 10px; 
+.useradd input {
+    border: 2px;
+    border-bottom: 2px solid #00CA79;
+}
+
+.useradd label {
+    padding : 5px ;
 }
 
 .form-group input {
