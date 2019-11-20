@@ -221,27 +221,33 @@ if (isset($_POST["submit"])){
                 unset($_SESSION['berhasileditgambar']);
                 ?>
 
-                <div class="form-group row">
+                <div class="form-group row" style="padding: 10px 20px;">
                     <form action="" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="id" value="<?= $sql["id"];?>">
                     <input type="hidden" name="gambar" value="<?= $sql["gambar"];?>">
          
-                
+                    <div class="row">
                     <label class="col-sm-2" for="judul">Judul : </label>
                     <div class="col-sm-10">
                     <input class="form-control" type="text" name="judul" id="judul" required value="<?= $sql["judul"];?>">
                     </div>
+                    </div>
 
+                    <div class="row">
                     <label class="col-sm-2" for="judul">Keterangan Judul : </label>
                     <div class="col-sm-10">
                     <input class="form-control" type="text" name="ketjudul" id="ketjudul" placeholder="max 100 character..." value="<?= $sql["ketjudul"];?>">
                     </div>
-                    
+                    </div>
+
+                    <div class="row">
                     <label class="col-sm-2" for="paragraf">Paragraf : </label>
                     <div class="col-sm-10">
                     <textarea class="form-control" name="paragraf" id="paragraf" placeholder="max 255 character..." rows="10" cols="30"><?= trim($sql["paragraf"],"\n");?></textarea>
                     </div>
+                    </div>
                    
+                    <div class="row">
                     <label class="col-sm-2" for="gambar">Gambar : </label>  
                     <div class="col-sm-5"> 
                     <input class="form-control" type="file" name="gambar" id="gambar">
@@ -249,9 +255,10 @@ if (isset($_POST["submit"])){
                     <p style="font-style: italic;">Or</p>
                     <p style="font-style: italic;">Aspect Rasio : -- 19 : 10 --</p>
                     </div>
-            
+                    
         <button class="btn btn-success" type="submit" name="submit">SAVE</button>
         </form>
+        </div>
                 </div>
             </div>
             <!-- /. PAGE INNER  -->
