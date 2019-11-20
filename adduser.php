@@ -251,7 +251,7 @@ if (isset($_POST["submit"])){
                         </div>
                     </div>
                     <div class="col-xs-10 col-lg-10">
-                    <input type="password" name="password" id="password" placeholder="Password here" required>
+                    <input type="password" name="password" id="password" placeholder="Password here" minlength="6" required>
                     </div>
                 </div>                    
 
@@ -262,7 +262,7 @@ if (isset($_POST["submit"])){
                         </div>
                     </div>
                     <div class="col-xs-10 col-lg-10">
-                    <input type="password" name="password2" id="password2" placeholder="Password here" required>
+                    <input type="password" name="password2" id="password2" placeholder="Password here" minlength="6" required >
                     </div>
                 </div>                    
                 

@@ -6,11 +6,6 @@ if(!isset($_SESSION["login"])){
     exit;
 }
 
-if(isset($_SESSION["userlogin"])){
-    header("Location: index-user.php");
-    exit;
-}
-
 require 'function.php';
 
 $g = query("SELECT * FROM logo ORDER BY id DESC LIMIT 1");
@@ -148,11 +143,11 @@ if (isset($_POST["submit"])){
 
         <div id="page-wrapper">
             <div id="page-inner">
-                <div class="row ">
+                <div class="row">
                     <div class="col-md-12">
                         <!-- <h1 class="page-head-line">CO CREATIVE ADMIN SITE</h1> -->
                         <h3 class="page-head-line">EDIT GAMBAR</h3>
-
+                        
                     </div>
                 </div> 
                 <!-- CONTENT DI SINI CUY -->
@@ -226,28 +221,33 @@ if (isset($_POST["submit"])){
                 unset($_SESSION['berhasileditgambar']);
                 ?>
 
-                <div class="form-group row">
+                <div class="form-group row" style="padding: 10px 20px;">
                     <form action="" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="id" value="<?= $sql["id"];?>">
                     <input type="hidden" name="gambar" value="<?= $sql["gambar"];?>">
          
-                
+                    <div class="row">
                     <label class="col-sm-2" for="judul">Judul : </label>
                     <div class="col-sm-10">
                     <input class="form-control" type="text" name="judul" id="judul" required value="<?= $sql["judul"];?>">
                     </div>
-                    
+                    </div>
+
+                    <div class="row">
                     <label class="col-sm-2" for="paragraf">Paragraf : </label>
                     <div class="col-sm-10">
                     <textarea class="form-control" name="paragraf" id="paragraf" rows="10" cols="30"><?= $sql["paragraf"];?></textarea>
                     </div>
-                   
+                    </div>
+
+                    <div class="row">
                     <label class="col-sm-2" for="gambar">Gambar : </label>  
                     <div class="col-sm-5"> 
                     <input class="form-control" type="file" name="gambar" id="gambar">
                     <p style="font-style: italic;">Size : Recommended -- 1920 X 1080 --</p>
                     <p style="font-style: italic;">Or</p>
                     <p style="font-style: italic;">Aspect Rasio : -- 19 : 10 --</p>
+                    </div>
                     </div>
             
         <button class="btn btn-success" type="submit" name="submit">SAVE</button>
