@@ -399,3 +399,31 @@ input[type=text] {
     padding-bottom: 20px;
     color: black;
 }
+
+/* -------------tabel ----------------*/
+
+.table-user {
+    width: 100%;
+}
+
+@media 
+only screen and (max-width: 760px) {
+    .table-user {
+        width: 100%;
+    }   
+
+    /* .table-user table, thead, tbody, th, td, tr { 
+        display: block;
+        
+    } */
+    .table-user table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	.table-user thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+}
