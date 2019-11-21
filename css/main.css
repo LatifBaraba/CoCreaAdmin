@@ -1345,8 +1345,16 @@ ul.external li a:hover {
     #generic_price_table .generic_content{
         margin-bottom:75px;
     }
+
+    .p-slider {
+        padding: 10px 40px ;
+    }
 }
 @media (min-width: 768px) and (max-width: 991px) {
+    .p-slider {
+        padding: 10px 200px ;
+    }
+    
     #generic_price_table .col-md-3{
         float:left;
         width:50%;
@@ -1393,6 +1401,9 @@ ul.external li a:hover {
 @media (min-width: 992px) and (max-width: 1199px) {
 }
 @media (min-width: 1200px) {
+    .p-slider {
+        padding: 10px 200px ;
+    }
 }
 #generic_price_table_home{
      font-family: 'Raleway', sans-serif;
@@ -1771,6 +1782,7 @@ textarea.form-control {
     .testimonial-item > div:after {
         bottom: -40px;
     }
+
 }
 
 
@@ -2087,7 +2099,3 @@ textarea.form-control {
     transition: 0.3s;
     width: 40%;
   }
-
-.p-slider {
-    padding: 10px 200px ;
-}

@@ -157,7 +157,7 @@ $g = query("SELECT * FROM logo ORDER BY id DESC LIMIT 1");
                 endif; 
                 unset($_SESSION['deleteuserberhasil']);
         ?>
-        <table class="table table-striped">
+        <table class="table table-striped table-user">
          <thead class="thead-dark">
             <tr>
                 <th>No.</th>
