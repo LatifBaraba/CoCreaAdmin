@@ -406,6 +406,18 @@ input[type=text] {
     width: 100%;
 }
 
+.panel-body  a {
+    text-decoration: none;
+    color: #d1d1d1;
+    float: right;
+    padding: 8px;
+}
+
+.panel-body  a:hover {
+    text-decoration: underline;
+    color: #5CB85C;
+}
+
 @media 
 only screen and (max-width: 760px) {
     .table-user {

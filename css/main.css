@@ -421,11 +421,7 @@ h1.navbar-brand {
     font-weight: 400;
     margin-bottom: 25px;
     text-transform: uppercase;
-}
-
-.CoCreativewarna  {
-
-
+    padding: 0px 100px;
 }
 
 .caption-content > span {
@@ -1883,6 +1879,7 @@ textarea.form-control {
 /* slider */
     .caption-content h2 {
         font-size: 18px;
+        padding : 20px 0px ;
     }
 
     .caption-content > span {
