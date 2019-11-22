@@ -108,7 +108,7 @@ $gambar2 = query("SELECT * FROM gallery");
 					<!-- /responsive nav button -->
 					
 					<!-- logo -->
-					<a class="navbar-brand" href="index-admin.php"><img src="./assets/img/<?= $g[0]['gambar']?>" id="logo" width="50"></a> 
+					<a class="navbar-brand" href="index-admin.php"><img src="./assets/img/<?= $g[0]['gambar']?>" id="logo" width="125"></a> 
 					<!-- <h1 class="navbar-brand"> -->
 						<!-- <a href="#body">Co Creative</a> -->
 					<!-- </h1> -->
