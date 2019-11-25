@@ -18,13 +18,14 @@ $sql = query("SELECT * FROM slider WHERE id = $id")[0];
 if (isset($_POST["submit"])){
 
         $id = $_POST['id'];
-
+        
         // cek apakah data diedit atau tidak
         if(uploadgambar()!= 0){
             // echo "<script>
             //      alert('Changes Succsess');
             //      document.location.href = 'imageslider.php';
             //      </script>";
+            $sql = query("SELECT * FROM slider WHERE id = $id")[0];
             $_SESSION['berhasileditgambar']= 1 ;
         }else{
             // header('Location: editgambar.php?id='.$id);
@@ -151,8 +152,7 @@ if (isset($_POST["submit"])){
                     </div>
                 </div> 
                 <!-- CONTENT DI SINI CUY -->
-                <?php 
-                // var_dump($_SESSION["edited"]);  
+                <?php   
                 if( isset($_SESSION["edited"]) == 1 ) : ?>
                 <div class="alert alert-danger fade in" role="alert">Picture Is Invalid !
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -160,13 +160,11 @@ if (isset($_POST["submit"])){
                 </button>
                 </div>
                 <?php
-                //$_SESSION["edited"] = 0; 
                 endif; 
                 unset($_SESSION['edited']);
                 ?>
 
                 <?php 
-                // var_dump($_SESSION["edited"]);  
                 if( isset($_SESSION["upload"]) == 1 ) : ?>
                 <div class="alert alert-danger fade in" role="alert">Upload picture first !
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -174,13 +172,11 @@ if (isset($_POST["submit"])){
                 </button>
                 </div>
                 <?php
-                //$_SESSION["edited"] = 0; 
                 endif; 
                 unset($_SESSION['upload']);
                 ?>
 
                 <?php 
-                // var_dump($_SESSION["edited"]);  
                 if( isset($_SESSION["gambarbesar"]) == 1 ) : ?>
                 <div class="alert alert-danger fade in" role="alert">Picture size too large | under 2mb
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -188,7 +184,6 @@ if (isset($_POST["submit"])){
                 </button>
                 </div>
                 <?php
-                //$_SESSION["edited"] = 0; 
                 endif; 
                 unset($_SESSION['gambarbesar']);
                 ?>
@@ -201,14 +196,12 @@ if (isset($_POST["submit"])){
                     <span aria-hidden="true">&times;</span>
                 </button>
                 </div>
-                <?php
-                //$_SESSION["edited"] = 0; 
+                <?php 
                 endif; 
                 unset($_SESSION['bukangambar']);
                 ?>
                 
-                <?php 
-                // var_dump($_SESSION["edited"]);  
+                <?php
                 if( isset($_SESSION["berhasileditgambar"]) == 1 ) : ?>
                 <div class="alert alert-success fade in" role="alert">Success edit data <a href="imageslider.php" class="alert-link">back to imageslider</a>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">

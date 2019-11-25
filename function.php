@@ -1,6 +1,7 @@
 <?php
 // Koneksi ke Database
 $conn = mysqli_connect("localhost","root","","admin");
+// $conn = mysqli_connect("localhost","cocreati_admin","superadmin009","cocreati_db_admin");
 
 // Koneksi Php Mailer
 
@@ -519,6 +520,8 @@ function kirimemail($post){
         $mail->isHTML(true);                                  // Set email format to HTML
         $mail->Subject = 'Co Creative';
         $mail->Body    = ' <a href="localhost/cocreativerev/gantipass.php?email='.$email.'">Click Here</a> to change ur Password ';
+        // $mail->Body    = ' <a href="coba.cocreative.id/gantipass.php?email='.$email.'">Click Here</a> to change ur Password ';
+       
         //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
         $mail->send();
 
