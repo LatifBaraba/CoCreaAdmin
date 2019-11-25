@@ -224,7 +224,7 @@ if (isset($_POST["submit"])){
                 <input type="file" name="gambar" id="gambar" class="upload" required>
 
                 </div>
-                <button class="btn btn-success" type="submit" name="submit">Input Data</button>
+                <button class="btn btn-success btn-logosubmit" type="submit" name="submit">Input Data</button>
                 </div>
                 <br>
                 <p style="font-style: italic; color: gray;">Picture size : under 2mb</p>

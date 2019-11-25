@@ -1400,6 +1400,11 @@ ul.external li a:hover {
     .p-slider {
         padding: 10px 200px ;
     }
+
+    .btn-logosubmit{
+        margin-top:0px;
+    }
+
 }
 #generic_price_table_home{
      font-family: 'Raleway', sans-serif;

@@ -418,6 +418,10 @@ input[type=text] {
     color: #5CB85C;
 }
 
+.btn-logosubmit{
+    margin-top:0px;
+}
+
 @media 
 only screen and (max-width: 760px) {
     .table-user {
@@ -437,5 +441,9 @@ only screen and (max-width: 760px) {
 		position: absolute;
 		top: -9999px;
 		left: -9999px;
-	}
+    }
+    
+    .btn-logosubmit{
+        margin-top:20px;
+    }
 }
