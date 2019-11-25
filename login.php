@@ -65,6 +65,7 @@ if( isset($_POST["login"]) ) {
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link href="assets/css/custom.css" rel="stylesheet" />
 </head>
 <style>
 .tittle {
@@ -107,10 +108,8 @@ if( isset($_POST["login"]) ) {
                                             <input type="password" class="form-control" name="password" id="password" placeholder="Your Password"/>
                                         </div>
                                         <button class="btn btn-success" type="submit" name="login">Login</button>
-                                     <!-- <a href="index.php" class="btn btn-success">Log-in</a> -->
-                                    <!-- <hr/>
-                                    Not register ? <a href="registerpage.html" >click here </a> or go to <a href="index.html">Home</a> 
-                                    </form> -->
+                                        <a href="submitemail.php" class="forgotpass">Forgot Password</a>
+                                    </form>
                             </div>
                         </div>
         </div>

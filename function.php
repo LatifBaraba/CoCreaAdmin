@@ -1,6 +1,21 @@
 <?php
 // Koneksi ke Database
 $conn = mysqli_connect("localhost","root","","admin");
+// $conn = mysqli_connect("localhost","cocreati_admin","superadmin009","cocreati_db_admin");
+
+// Koneksi Php Mailer
+
+// Import PHPMailer classes into the global namespace
+// These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+// Load Composer's autoloader
+//require 'vendor/autoload.php';
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
 
 function query($query){
     global $conn;
@@ -383,26 +398,6 @@ function uploadgallery(){
     return $namaFileBaru;
 }
 
-
-// function tambahgallery(){
-//     global $conn;
-//      // upload gambar
-//      $gambar = uploadgallery();
-//      if( !$gambar ){
-//            return false;
-//      }
-
-//      // query insert data
-//      $query = "INSERT INTO gallery VALUES 
-//      ('','$gambar')
-//      ";
-
-//      mysqli_query($conn,$query);
-
-//      return mysqli_affected_rows($conn);
-
-// }
-
 function editgallery($dt) {
     global $conn;
 
@@ -430,30 +425,113 @@ function editgallery($dt) {
 }
 
 function changepass($data) {
-global $conn;
-$id = $_POST["id"];
+    global $conn;
+    $id = $_POST["id"];
 
-$password = mysqli_real_escape_string($conn, $data["password"]);
-$password2 = mysqli_real_escape_string($conn, $data["password2"]);
+    $password = mysqli_real_escape_string($conn, $data["password"]);
+    $password2 = mysqli_real_escape_string($conn, $data["password2"]);
 
-if( $password !== $password2 ) {
-    $_SESSION['passtidaksama']= 1 ;
-    return false;
-    // var_dump($password);
-} else {
-    $password = password_hash($password, PASSWORD_DEFAULT);
-    
-    $query = "UPDATE user SET
-                password = '$password'
-            WHERE id = '$id';
-    ";
-    mysqli_query($conn,$query);
+    if( $password !== $password2 ) {
+        $_SESSION['passtidaksama']= 1 ;
+        return false;
+        // var_dump($password);
+    } else {
+        $password = password_hash($password, PASSWORD_DEFAULT);
+        
+        $query = "UPDATE user SET
+                    password = '$password'
+                WHERE id = '$id';
+        ";
+        mysqli_query($conn,$query);
 
-    return mysqli_affected_rows($conn);
+        return mysqli_affected_rows($conn);
 
+    }
 }
 
+function changepassemail($data,$email) {
+    global $conn;
 
+    $email = htmlspecialchars($email);
+    $password = mysqli_real_escape_string($conn, $data["password"]);
+    $password2 = mysqli_real_escape_string($conn, $data["password2"]);
+
+    if( $password !== $password2 ) {
+        $_SESSION['passtidaksama']= 1 ;
+        return false;
+        // var_dump($password);
+    } else {
+        $password = password_hash($password, PASSWORD_DEFAULT);
+        
+        $query = "UPDATE user SET
+                    password = '$password'
+                WHERE email = '$email';
+        ";
+        mysqli_query($conn,$query);
+
+        return mysqli_affected_rows($conn);
+
+    }
+}
+
+function kirimemail($post){
+
+    //global $mail;
+    $mail = new PHPMailer(true);
+    $email = htmlspecialchars($post["email"]);
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)       
+    ) {
+
+        $_SESSION['emailisinvalid']=1;
+        return false;
+    }
+
+    try {
+        //Server settings
+        $mail->SMTPDebug = 0;                      // Enable verbose debug output
+        $mail->isSMTP();                                            // Send using SMTP
+        $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
+        $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+        $mail->Username   = 'cocreativework@gmail.com';                     // SMTP username
+        $mail->Password   = 'cocreative2019';                               // SMTP password
+        $mail->SMTPSecure = 'ssl';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
+        $mail->Port       = 465;   
+        $mail->SMTPOptions = array (
+            'ssl' => array (
+              'verify_peer' => false,
+              'verify_peer_name' => false,
+              'allow_self_signed' => true
+            )
+          );
+                                    // TCP port to connect to
+        //Recipients
+        $mail->setFrom('cocreativework@gmail.com', 'Admin');
+        $mail->addAddress($email);               // Name is optional
+        //$mail->addReplyTo('latifbaraba88@gmail.com', 'Information');
+        // $mail->addCC('cc@example.com');
+        // $mail->addBCC('bcc@example.com');
+        
+        // Attachments
+        // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+        // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+        
+        // Content
+        $mail->isHTML(true);                                  // Set email format to HTML
+        $mail->Subject = 'Co Creative';
+        $mail->Body    = ' <a href="localhost/cocreativerev/gantipass.php?email='.$email.'">Click Here</a> to change ur Password ';
+        // $mail->Body    = ' <a href="coba.cocreative.id/gantipass.php?email='.$email.'">Click Here</a> to change ur Password ';
+       
+        //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+        $mail->send();
+
+            $_SESSION['emailberhasil']=1;
+            // echo 'Message has been sent';
+    } catch (Exception $e) {
+        // echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            $_SESSION['emailgagal']=1;
+
+    }
 }
 
 ?>

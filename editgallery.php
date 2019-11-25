@@ -13,18 +13,18 @@ $g = query("SELECT * FROM logo ORDER BY id DESC LIMIT 1");
 $id = $_GET["id"];
 
 $sql = query("SELECT * FROM gallery WHERE id = $id")[0];
-        var_dump($sql);
+// var_dump($sql);
 
 if (isset($_POST["submit"])){
 
         $id = $_POST['id'];
-
         // cek apakah data diedit atau tidak
         if(uploadgallery()!= 0){
             // echo "<script>
             //      alert('Changes Succsess');
             //      document.location.href = 'imageslider.php';
             //      </script>";
+            $sql = query("SELECT * FROM gallery WHERE id = $id")[0];
             $_SESSION['berhasileditgambar']= 1 ;
         }else{
             // header('Location: editgambar.php?id='.$id);

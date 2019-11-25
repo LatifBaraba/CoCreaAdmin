@@ -406,6 +406,22 @@ input[type=text] {
     width: 100%;
 }
 
+.panel-body  a {
+    text-decoration: none;
+    color: #d1d1d1;
+    float: right;
+    padding: 8px;
+}
+
+.panel-body  a:hover {
+    text-decoration: underline;
+    color: #5CB85C;
+}
+
+.btn-logosubmit{
+    margin-top:0px;
+}
+
 @media 
 only screen and (max-width: 760px) {
     .table-user {
@@ -425,5 +441,9 @@ only screen and (max-width: 760px) {
 		position: absolute;
 		top: -9999px;
 		left: -9999px;
-	}
+    }
+    
+    .btn-logosubmit{
+        margin-top:20px;
+    }
 }
