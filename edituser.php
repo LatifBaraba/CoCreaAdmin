@@ -244,43 +244,43 @@ if (isset($_POST['confirm'])) {
             <form action="" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id" value="<?= $sql["id"];?>">
             <div class="row">
-                <div class="col-xs-1">
+                <div class="col-xs-3">
                 <div class="form-group">
                     <label for="username">Username  </label>
                 </div>
                 </div>
-                <div class="col-xs-1">
-                    <input type="text" size="30" name="username" id="username" required value="<?= $sql["username"];?>">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-1">
-                    <div class="form-group">
-                        <label for="email">Email  </label>
-                    </div>
-                </div>
-                <div class="col-xs-1">
-                    <input type="text" size="40" name="email" id="email" required value="<?= $sql["email"];?>">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-1">
-                    <div class="form-group">
-                        <label for="alamat">Address  </label>
-                    </div>
-                </div>
-                <div class="col-xs-1">
-                    <input type="text" size="40" name="alamat" id="alamat" required value="<?= $sql["alamat"];?>">
+                <div class="col-xs-8">
+                    <input type="text" name="username" id="username" required value="<?= $sql["username"];?>">
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-2">
                     <div class="form-group">
+                        <label for="email">Email  </label>
+                    </div>
+                </div>
+                <div class="col-xs-8">
+                    <input type="text" size="40" name="email" id="email" required value="<?= $sql["email"];?>">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2">
+                    <div class="form-group">
+                        <label for="alamat">Address  </label>
+                    </div>
+                </div>
+                <div class="col-xs-8">
+                    <input type="text" size="40" name="alamat" id="alamat" required value="<?= $sql["alamat"];?>">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-5">
+                    <div class="form-group">
                         <label for="telepon">Number Phone  </label>
                     </div>
                 </div>
-                <div class="col-xs-1">
-                <input type="text" size="30" name="telepon" id="telepon" required value="<?= $sql["telepon"];?>">
+                <div class="col-xs-7">
+                <input type="text" size="20" name="telepon" id="telepon" required value="<?= $sql["telepon"];?>">
                 </div>
             </div>
             <button class="btn btn-success" type="submit" name="submit">Edit Data</button>
@@ -291,19 +291,19 @@ if (isset($_POST['confirm'])) {
             <div id="moreField" style="display:none;">
                 <div class="form-group">
                     <div class="row">
-                            <div class="col-xs-2">
+                            <div class="col-xs-5">
                                     <label for="password">New Password : </label>
                             </div>
-                            <div class="col-xs-1">
-                            <input type="password" size="30" name="password" id="password" placeholder="New Password" >
+                            <div class="col-xs-7">
+                            <input type="password" size="20" name="password" id="password" placeholder="New Password" >
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-xs-2">
+                            <div class="col-xs-5">
                                     <label for="password">Confirm Password : </label>
                             </div>
-                            <div class="col-xs-1">
-                            <input type="password" size="30" name="password2" id="password2" placeholder="Confirm Password" >
+                            <div class="col-xs-7">
+                            <input type="password" size="20" name="password2" id="password2" placeholder="Confirm Password" >
                             </div>
                         </div>
                     <button class="btn btn-success btn-confirmpass" type="submit" name="confirm" value="confirm">Confirm Change</button>
