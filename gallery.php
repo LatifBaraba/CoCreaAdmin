@@ -102,7 +102,7 @@ $gambar = query("SELECT * FROM gallery");
                                 <a href="gallery.php"><i class="fa fa-picture-o"></i>Update Album 'Our Space'</a>
                             </li>
                             <li>
-                               <a href="profilepicture.html"><i class="far fa-user-circle"></i>Update Your Profile Picture</a> 
+                               <a href="profilepicture.html"><i class="fa fa-user"></i>Update Your Profile Picture</a> 
 
                             </li> 
                         </ul>
