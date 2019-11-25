@@ -1,3 +1,11 @@
 v.05
 - update responsif slider (index.php) - Front Web CoCreative.id
 - update responsif tabel user (index-admin.php)
+
+v.07
+- update logo admin responsif
+- update right header responsif
+- fix index logo
+- add admin "add user button"
+- refresh page after edit or update
+

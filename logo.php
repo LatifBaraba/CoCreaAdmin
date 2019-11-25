@@ -115,7 +115,7 @@ if (isset($_POST["submit"])){
                                 <a href="gallery.php"><i class="fa fa-picture-o"></i>Update Album 'Our Space'</a>
                             </li>
                             <li>
-                               <a href="profilepicture.html"><i class="far fa-user-circle"></i>Update Your Profile Picture</a> 
+                               <a href="profilepicture.html"><i class="fa fa-user"></i>Update Your Profile Picture</a> 
 
                             </li> 
                         </ul>
@@ -213,18 +213,21 @@ if (isset($_POST["submit"])){
                     unset($_SESSION['logoterlalubesar']);
                 ?>
                         
-                        <span class="input-group-text">Upload</span>
+                        <span class="input-group-text"></span>
                   
                     </div>    
                 
                 <form action="" enctype="multipart/form-data" method="post">
 
-                <div class="fileUpload btn btn-success">
-                                
-                <input type="file" name="gambar" id="gambar" class="upload" required>
-
-                </div>
-                <button class="btn btn-success btn-logosubmit" type="submit" name="submit">Input Data</button>
+                <!-- <div class="fileUpload btn btn-info"> -->
+                    <div class="upload-btn">
+                        <label><span>Choose file</span>            
+                            <input type="file" name="gambar" id="gambar" class="upload-btn" required>
+                        <!-- <label for="file">Choose a file</label> -->
+                        </label>
+                <!-- </label> -->
+                    </div>
+                    <button class="btn btn-success btn-logosubmit" type="submit" name="submit">Upload Data</button>
                 </div>
                 <br>
                 <p style="font-style: italic; color: gray;">Picture size : under 2mb</p>

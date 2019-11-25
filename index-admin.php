@@ -158,7 +158,7 @@ $g = query("SELECT * FROM logo ORDER BY id DESC LIMIT 1");
                 unset($_SESSION['deleteuserberhasil']);
         ?>
         <table class="table table-striped table-user">
-         <thead class="thead-dark">
+         <thead class="thead-user">
             <tr>
                 <th>No.</th>
                 <th>Action</th>
@@ -173,8 +173,8 @@ $g = query("SELECT * FROM logo ORDER BY id DESC LIMIT 1");
             <tr>
                 <td><?php echo $i;?></td>
                 <td>
-                <a href="edituser.php?id=<?php echo $row["id"];?>"><i class="fa fa-edit"></i> edit</a> |
-                <a href="delete.php?id=<?php echo $row["id"];?>" onclick="return confirm('Confrim Delete user ?');"><i class="fa fa-times"></i> delete</a>
+                <a href="edituser.php?id=<?php echo $row["id"];?>"><button class="btn btn-info"><i class="fa fa-edit"></i> edit</button></a> |
+                <a href="delete.php?id=<?php echo $row["id"];?>" onclick="return confirm('Confrim Delete user ?');"><button class="btn btn-danger"><i class="fa fa-times"></i> delete</button></a>
                 </td>
                 <td><?php echo $row["username"];?></td>
                 <td><?php echo $row["email"];?></td>

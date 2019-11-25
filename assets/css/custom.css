@@ -113,10 +113,26 @@
     text-align:right;
     font-weight:900;
     padding-bottom:20px;
-    
-
 }
 
+.upload-btn label {
+    padding: 10px 70px;
+    background: #5BC0DE;
+    border-radius: 5px; 
+    display: inline;
+    display: table;
+    color: #fff;
+    cursor: pointer;
+    margin: 20px 0px;
+}
+
+.upload-btn label:hover {
+    background-color: #51a8c2;
+}
+
+input[type="file"] {
+    display: none;
+}
 /*==============================================
         Reviews Styles
     =============================================*/
@@ -405,6 +421,23 @@ input[type=text] {
     width: 100%;
 }
 
+.table-user tr {
+    color: black;
+}
+
+.table-user button {
+    padding: 4px 4px;
+    color: white;
+}
+
+.table-user i {
+    color: white;
+}
+
+.thead-user {
+    background-color: #cfcfcf;
+}
+
 .panel-body  a {
     text-decoration: none;
     color: #d1d1d1;
@@ -425,7 +458,7 @@ input[type=text] {
 only screen and (max-width: 760px) {
     .table-user {
         width: 100%;
-    }   
+    }  
 
     /* .table-user table, thead, tbody, th, td, tr { 
         display: block;

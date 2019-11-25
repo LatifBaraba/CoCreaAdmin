@@ -32,9 +32,8 @@ body {
 
 #page-inner {
     width: 100%;
-    margin: 10px 20px 10px 0px;
     background-color: #fff!important;
-    padding: 10px;
+    padding: 8px 20px 20px 20px;
     min-height: 1200px;
 }
 
@@ -45,7 +44,7 @@ body {
     font-weight: 800;
     border-bottom: 2px solid #00CA79;
     text-align: center;
-    margin-bottom: 30px;
+    padding-bottom:10px;
 }
 
 .page-tittle {
@@ -243,6 +242,14 @@ body {
     #page-wrapper {
         margin: 0 0 0 260px;
         padding: 15px 30px;
+        min-height: 1200px;
+    }
+
+    #page-inner {
+        width: 100%;
+        margin: 10px 20px 20px 10px;
+        background-color: #fff!important;
+        padding: 8px 20px 20px 20px;
         min-height: 1200px;
     }
 
