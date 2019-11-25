@@ -186,7 +186,7 @@ $g = query("SELECT * FROM logo ORDER BY id DESC LIMIT 1");
         </table>
         <!-- <button class="btn btn-secondary" type="add" name="add">Add User</button> -->
         
-        <a href="adduser.php"><i class="fas fa-plus-square"></i> Add User</a>
+        <a href="adduser.php"><button class="btn btn-success"><i class="fa fa-users"></i> Add User</button></a>
         <!-- <input type="button" onclick="location='adduser.html'" class="btn btn-danger"> -->
         </div>
             <!-- /. PAGE INNER  -->
