@@ -118,12 +118,18 @@ if (isset($_POST["submit"])){
                             <li>
                                 <a href="gallery.php"><i class="fa fa-picture-o"></i>Update Album</a>
                             </li>
-                            <!-- <li>
-                               <a href="profilepicture.html"><i class="fa fa-user"></i>Update Your Profile Picture</a> 
-
-                            </li>  -->
                         </ul>
                     </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-tags "></i>Products <span class="fa arrow"></span></a>
+                         <ul class="nav nav-second-level">
+                            <li>
+                                <a href="memberprice.php"><i class="fa fa-money"></i>Member & Price</a>
+                            </li>
+                        </ul>
+                    </li>
+
                     <?php if(!isset($_SESSION['login']))
                     echo " <li>
                     <a href='login.php'><i class='fa fa-sign-in'></i>Login Page</a>

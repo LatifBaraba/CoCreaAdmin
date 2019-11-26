@@ -152,12 +152,18 @@ if (isset($_POST['confirm'])) {
                             <li>
                                 <a href="gallery.php"><i class="fa fa-picture-o"></i>Update Album</a>
                             </li>
-                            <!-- <li>
-                               <a href="profilepicture.html"><i class="fa fa-user"></i>Update Your Profile Picture</a> 
-
-                            </li>  -->
                         </ul>
                     </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-tags "></i>Products <span class="fa arrow"></span></a>
+                         <ul class="nav nav-second-level">
+                            <li>
+                                <a href="memberprice.php"><i class="fa fa-money"></i>Member & Price</a>
+                            </li>
+                        </ul>
+                    </li>
+
                     <?php if(!isset($_SESSION['login']))
                     echo " <li>
                     <a href='login.php'><i class='fa fa-sign-in'></i>Login Page</a>
@@ -242,7 +248,7 @@ if (isset($_POST['confirm'])) {
                 ?>
             
             <form action="" method="post" enctype="multipart/form-data">
-            <div class="filler-user">
+        <div class="filler-user">
             <input type="hidden" name="id" value="<?= $sql["id"];?>">
             <div class="row">
                 <div class="form-group">
@@ -271,27 +277,39 @@ if (isset($_POST['confirm'])) {
             <button class="btn btn-success" type="submit" name="submit">Edit Data</button>
             
             <button id="more" class="btn btn-info">Change Password</button>
-        </div>
             
             <div class="formpass">
             <div id="moreField" style="display:none;">
                 <div class="form-group">
                     <div class="row">
+                        <div class="form-group">
+                            <label for="alamat">New Password </label>
+                        </div>
+                        <input type="password" size="20" name="password" id="password" placeholder="New Password">
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="alamat">Confirm Password </label>
+                        </div>
+                        <input type="password2" size="20" name="password2" id="password2" placeholder="Confirm Password">
+                    </div>
+                </div>
+                    <!-- <div class="row">
                             <div class="col-xs-3">
                                     <label for="password">New Password : </label>
                             </div>
                             <div class="col-xs-7">
                             <input type="password" size="20" name="password" id="password" placeholder="New Password" >
                             </div>
-                        </div>
-                        <div class="row">
+                        </div> -->
+                        <!-- <div class="row">
                             <div class="col-xs-5">
                                     <label for="password">Confirm Password : </label>
                             </div>
                             <div class="col-xs-7">
                             <input type="password" size="20" name="password2" id="password2" placeholder="Confirm Password" >
                             </div>
-                        </div>
+                        </div> -->
                     <button class="btn btn-success btn-confirmpass" type="submit" name="confirm" value="confirm">Confirm Change</button>
                 </div>
             

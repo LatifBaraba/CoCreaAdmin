@@ -123,12 +123,18 @@ if (isset($_POST["submit"])){
                             <li>
                                 <a href="gallery.php"><i class="fa fa-picture-o"></i>Update Album</a>
                             </li>
-                            <!-- <li>
-                               <a href="profilepicture.html"><i class="fa fa-user"></i>Update Your Profile Picture</a> 
-
-                            </li>  -->
                         </ul>
                     </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-tags "></i>Products <span class="fa arrow"></span></a>
+                         <ul class="nav nav-second-level">
+                            <li>
+                                <a href="memberprice.php"><i class="fa fa-money"></i>Member & Price</a>
+                            </li>
+                        </ul>
+                    </li>
+
                     <?php if(!isset($_SESSION['login']))
                     echo " <li>
                     <a href='login.php'><i class='fa fa-sign-in'></i>Login Page</a>
@@ -201,30 +207,30 @@ if (isset($_POST["submit"])){
 
             <div class="filler-user">
                 <form action="" enctype="multipart/form-data" method="post">
-                <div class="col-md-4">
+                <div class="col-md-3">
                 <div class="row">
                         <div class="form-group">
                         <label for="username">Username </label>
                     </div>
-                    <input type="text" size="30" name="username" id="username" placeholder="Adi Rayana ..." required>
+                    <input type="text" size="30" name="username" id="username" placeholder="Arga Pratama" required>
                 </div>   
 
                 <div class="row">
                         <div class="form-group">
                         <label for="email">Email </label>
                         </div>
-                        <input type="text" size="30" name="email" id="email" placeholder="adiRaya@gmail.com ..." required>
+                        <input type="text" size="30" name="email" id="email" placeholder="CoCreative@gmail.com" required>
                 </div>  
 
                 <div class="row">
                         <div class="form-group">
                         <label for="alamat">Address </label>
                     </div>
-                    <input type="text" size="30" name="alamat" id="alamat" placeholder="Jl. Sang Pejuang" required>
+                    <input type="text" size="30" name="alamat" id="alamat" placeholder="Jl. Cisitu Indah" required>
                 </div>                
                 </div>
                 
-                <div class="col-md-6">
+                <div class="col-md-4">
 
                 <div class="row  add-user">
                         <div class="form-group">

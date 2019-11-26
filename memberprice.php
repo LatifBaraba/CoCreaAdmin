@@ -10,23 +10,11 @@ if(!isset($_SESSION["login"])){
 require 'function.php';
 
 $g = query("SELECT * FROM logo ORDER BY id DESC LIMIT 1");
-if (isset($_POST["submit"])){
 
-        // cek apakah data ditambahkan atau tidak
-        if(tambah($_POST)> 0){
-            // echo "<script>
-            //      alert('data berhasil ditambahkan!');
-            //      document.location.href = 'index-admin.php';
-            //      </script>";
-            $_SESSION["logoberhasil"] = 1;
-        }else{
-            // echo "<script>
-            //      alert('data gagal ditambahkan!');
-            //      document.location.href = 'index-admin.php';
-            //       </script>";
-            $_SESSION["logogagal"] = 1;
-        }
-    }
+$gambar = query("SELECT * FROM slider");
+
+// var_dump($gambar);
+
 ?>
 
 
@@ -59,15 +47,15 @@ if (isset($_POST["submit"])){
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                
                 <?php if(isset($_SESSION['userlogin'])){ ?>
                     <a class='navbar-brand' href='index-user.php'><img src='./assets/img/<?php echo $g[0]['gambar']?>' id='logo' width='50'></a>
                 <?php }?> 
 
                 <?php if(!isset($_SESSION['userlogin'])){ ?>
                     <a class='navbar-brand' href='index-admin.php'><img src='./assets/img/<?php echo $g[0]['gambar']?>' id='logo' width='50'></a>
-                <?php }?> 
+                <?php }?>
                 
-                <!-- <img src="assets/img/logonew.png" alt="..." class="img-thumbnail"> -->
             </div>
 
             <div class="header-right">
@@ -125,7 +113,7 @@ if (isset($_POST["submit"])){
                             </li>
                         </ul>
                     </li>
-
+                    
                     <?php if(!isset($_SESSION['login']))
                     echo " <li>
                     <a href='login.php'><i class='fa fa-sign-in'></i>Login Page</a>
@@ -143,110 +131,93 @@ if (isset($_POST["submit"])){
        
         <!-- /. NAV SIDE  -->
 
-
+        
         <div id="page-wrapper">
             <div id="page-inner">
-                <div class="row">
+                <div class="row ">
                     <div class="col-md-12">
-                        <h1 class="page-head-line">UPDATE LOGO SECTION </h1>
+                        <!-- <h1 class="page-head-line">CO CREATIVE ADMIN SITE</h1> -->
+                        <h3 class="page-head-line">Membership & Price</h3>
                     </div>
-                </div>
-                <!-- /. ROW  -->
-                <!-- UPDATE LOGO -->
-
-            <div class="container">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-
-                    <?php 
-                    if( isset($_SESSION["logoberhasil"]) == 1 ) : ?>
-                        <div class="alert alert-success" role="alert">Success added logo <a href="index-admin.php" class="alert-link">back to Dashboard</a>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>    
-                        </div>
-                <?php
-                endif; 
-                    unset($_SESSION['logoberhasil']);
-                ?>
-                
-                <?php 
-                    if( isset($_SESSION["logogagal"]) == 1 ) : ?>
-                        <div class="alert alert-danger" role="alert">Failed added logo
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>    
-                        </div>
-                <?php
-                endif; 
-                    unset($_SESSION['logogagal']);
-                ?>
-
-                <?php 
-                    if( isset($_SESSION["uploadbukangambar"]) == 1 ) : ?>
-                        <div class="alert alert-danger" role="alert"><strong>Please upload a picture</strong> format (jpg, jpeg or png)
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>    
-                        </div>
-                <?php
-                endif; 
-                    unset($_SESSION['uploadbukangambar']);
-                ?>
-                
-
-                <?php 
-                    if( isset($_SESSION["uploadgambardulu"]) == 1 ) : ?>
-                        <div class="alert alert-danger" role="alert"><strong>Please upload a picture</strong>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>    
-                        </div>
-                <?php
-                endif; 
-                    unset($_SESSION['uploadgambardulu']);
-                ?>
-
-                <?php 
-                    if( isset($_SESSION["logoterlalubesar"]) == 1 ) : ?>
-                        <div class="alert alert-danger" role="alert"><strong>Picture size to large</strong> | under 2mb
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>    
-                        </div>
-                <?php
-                endif; 
-                    unset($_SESSION['logoterlalubesar']);
-                ?>
-                        
-                        <span class="input-group-text"></span>
-                  
-                    </div>    
-                
-                <form action="" enctype="multipart/form-data" method="post">
-
-                <!-- <div class="fileUpload btn btn-info"> -->
-                    <div class="upload-btn">
-                        <label><span>Choose file</span>            
-                            <input type="file" name="gambar" id="gambar" class="upload-btn" required>
-                        <!-- <label for="file">Choose a file</label> -->
-                        </label>
-                <!-- </label> -->
-                    </div>
-                    <button class="btn btn-success btn-logosubmit" type="submit" name="submit">Upload Data</button>
-                </div>
-                <br>
-                <p style="font-style: italic; color: gray;">Picture size : under 2mb</p>
-                </form>
-
-         <!-- SAMPE SINI -->
-        </div>
+                </div> 
+            
             <!-- /. PAGE INNER  -->
+            <div class="filler-user">
+                <form action="" enctype="multipart/form-data" method="post">
+                <div class="col-md-5">
+                <div class="row">
+                        <div class="form-group">
+                        <label for="username">Header </label>
+                    </div>
+                    <input type="text" size="40" name="judul" id="judul" placeholder="Days Membership" required>
+                </div>   
+
+                <div class="row">
+                        <div class="form-group">
+                        <label for="email">Price </label>
+                        </div>
+                        <input type="text" size="15" name="email" id="email" placeholder="10">
+                </div>  
+
+                <div class="row">
+                        <div class="form-group">
+                        <label for="alamat">Address </label>
+                    </div>
+                    <input type="text" size="30" name="alamat" id="alamat" placeholder="Jl. Cisitu Indah" required>
+                </div> 
+                <button class="btn btn-success" type="submit" name="submit">Input Data</button>
+                <button class="btn btn-info" type="submit" name="submit">Discount</button>
+
+                </div>
+                
+                <div class="col-md-5">
+
+                <div class="row  add-user">
+                        <div class="form-group">
+                        <label for="fitur1">Feature </label>
+                        <label>1</label>
+                    </div>
+                    <input type="text" size="60" name="fitur1" id="fitur1" placeholder="High Speed Connection">
+                </div>              
+                <div class="row  add-user">
+                        <div class="form-group">
+                        <label for="fitur1">Feature </label>
+                        <label>2</label>
+                    </div>
+                    <input type="text" size="60" name="fitur1" id="fitur1" placeholder="High Speed Connection">
+                </div>              
+                <div class="row  add-user">
+                        <div class="form-group">
+                        <label for="fitur1">Feature </label>
+                        <label>3</label>
+                    </div>
+                    <input type="text" size="60" name="fitur1" id="fitur1" placeholder="High Speed Connection">
+                </div>              
+                <div class="row  add-user">
+                        <div class="form-group">
+                        <label for="fitur1">Feature </label>
+                        <label>4</label>
+                    </div>
+                    <input type="text" size="60" name="fitur1" id="fitur1" placeholder="High Speed Connection">
+                </div>              
+                <div class="row  add-user">
+                        <div class="form-group">
+                        <label for="fitur1">Feature </label>
+                        <label>5</label>
+                    </div>
+                    <input type="text" size="60" name="fitur1" id="fitur1" placeholder="High Speed Connection">
+                </div>              
+            </div>
+            <!-- <div class="col-md-12">
+            </div> -->
+        </form>
         </div>
+
+        </div>
+        
         <!-- /. PAGE WRAPPER  -->
     </div>
     <!-- /. WRAPPER  -->
-
     <div id="footer-sec">
         &copy; 2014 YourCompany | Design By : <a href="http://www.binarytheme.com/" target="_blank">BinaryTheme.com</a>
     </div>

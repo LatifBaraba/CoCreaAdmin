@@ -145,6 +145,7 @@
 .filler-user input {
     border: 2px;
     border-bottom: 2px solid #00CA79;
+    padding-left: 10px;
 }
 
 .filler-user button {
@@ -154,29 +155,6 @@
 .add-user {
     padding-left: 20px;
 }
-
-/* .useradd {
-    margin-left: 20px;
-}
-
-.useradd label {
-    font-size: 16px;
-}
-
-.useradd input {
-    border: 2px;
-    border-bottom: 2px solid #00CA79;
-    padding : 10px 10px;
-    margin: 10px 0px;
-}
-
-.useradd button {
-    margin-top: 20px;
-}
-
-.useradd .add-row {
-    margin: 0px 10px;
-} */
 
 
 /*==============================================

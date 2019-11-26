@@ -110,10 +110,15 @@ $g = query("SELECT * FROM logo ORDER BY id DESC LIMIT 1");
                             <li>
                                 <a href="gallery.php"><i class="fa fa-picture-o"></i>Update Album</a>
                             </li>
-                            <!-- <li>
-                               <a href="profilepicture.html"><i class="fa fa-user"></i>Update Your Profile Picture</a> 
+                        </ul>
+                    </li>
 
-                            </li>  -->
+                    <li>
+                        <a href="#"><i class="fa fa-tags "></i>Products <span class="fa arrow"></span></a>
+                         <ul class="nav nav-second-level">
+                            <li>
+                                <a href="memberprice.php"><i class="fa fa-money"></i>Member & Price</a>
+                            </li>
                         </ul>
                     </li>
                     
