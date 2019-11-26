@@ -142,9 +142,41 @@
     font-size: 16px;
 }
 
+.filler-user input {
+    border: 2px;
+    border-bottom: 2px solid #00CA79;
+}
+
 .filler-user button {
     margin-top: 20px;
 }
+
+.add-user {
+    padding-left: 20px;
+}
+
+/* .useradd {
+    margin-left: 20px;
+}
+
+.useradd label {
+    font-size: 16px;
+}
+
+.useradd input {
+    border: 2px;
+    border-bottom: 2px solid #00CA79;
+    padding : 10px 10px;
+    margin: 10px 0px;
+}
+
+.useradd button {
+    margin-top: 20px;
+}
+
+.useradd .add-row {
+    margin: 0px 10px;
+} */
 
 
 /*==============================================
@@ -399,15 +431,6 @@ input[type=text] {
     margin-top: 20px;
 }
 
-.useradd input {
-    border: 2px;
-    border-bottom: 2px solid #00CA79;
-}
-
-.useradd label {
-    padding : 5px ;
-}
-
 .form-group input {
     border: 2px;
     border-bottom: 2px solid #00CA79;
@@ -491,5 +514,9 @@ only screen and (max-width: 760px) {
     
     .btn-logosubmit{
         margin-top:20px;
+    }
+
+    .add-user {
+        padding-left: 0px;
     }
 }

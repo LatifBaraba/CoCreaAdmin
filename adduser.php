@@ -198,75 +198,57 @@ if (isset($_POST["submit"])){
                 endif; 
                 unset($_SESSION['usernamesama']);
                 ?>
-                <div class="useradd">
+
+            <div class="filler-user">
                 <form action="" enctype="multipart/form-data" method="post">
+                <div class="col-md-4">
                 <div class="row">
-                    <div class="col-xs-3 col-lg-1">
                         <div class="form-group">
                         <label for="username">Username </label>
-                        </div>
                     </div>
-                    <div class="col-xs-9 col-lg-10">
                     <input type="text" size="30" name="username" id="username" placeholder="Adi Rayana ..." required>
-                    </div>
                 </div>   
 
                 <div class="row">
-                    <div class="col-xs-2 col-lg-1">
                         <div class="form-group">
                         <label for="email">Email </label>
                         </div>
-                    </div>
-                    <div class="col-xs-10 col-lg-10">
-                    <input type="text" size="30" name="email" id="email" placeholder="adiRaya@gmail.com ..." required>
-                    </div>
+                        <input type="text" size="30" name="email" id="email" placeholder="adiRaya@gmail.com ..." required>
                 </div>  
 
                 <div class="row">
-                    <div class="col-xs-2 col-lg-1">
                         <div class="form-group">
                         <label for="alamat">Address </label>
-                        </div>
                     </div>
-                    <div class="col-xs-10 col-lg-11">
-                    <input type="text" size="30" name="alamat" id="alamat" placeholder="Jl. Sang Pejuang ..." required>
-                    </div>
-                </div>       
+                    <input type="text" size="30" name="alamat" id="alamat" placeholder="Jl. Sang Pejuang" required>
+                </div>                
+                </div>
+                
+                <div class="col-md-6">
 
-                <div class="row">
-                    <div class="col-xs-2 col-lg-2">
+                <div class="row  add-user">
                         <div class="form-group">
                         <label for="telepon">Phone Number </label>
                         </div>
-                    </div>
-                    <div class="col-xs-10 col-lg-10">
-                    <input type="text" name="telepon" id="telepon" placeholder="08212...">
-                    </div>
-                </div>          
-
-                <div class="row">
-                    <div class="col-xs-2 col-lg-2">
+                        <input type="text" name="telepon" id="telepon" placeholder="0821348709">
+                </div> 
+                <div class="row  add-user">
                         <div class="form-group">
-                        <label for="password">Password : </label>
+                        <label for="password">Password </label>
                         </div>
-                    </div>
-                    <div class="col-xs-10 col-lg-10">
-                    <input type="password" name="password" id="password" placeholder="Password here" minlength="6" required>
-                    </div>
+                        <input type="password" name="password" id="password" placeholder="Password" minlength="6" required>
                 </div>                    
 
-                <div class="row">
-                    <div class="col-xs-2 col-lg-2">
+                <div class="row add-user">
                         <div class="form-group">
-                        <label for="password2">Confirm Password : </label>
-                        </div>
+                        <label for="password2">Confirm Password </label>
                     </div>
-                    <div class="col-xs-10 col-lg-10">
-                    <input type="password" name="password2" id="password2" placeholder="Password here" minlength="6" required >
-                    </div>
+                    <input type="password" name="password2" id="password2" placeholder="Confirm Password" minlength="6" required >
                 </div>                    
-                
-        <button class="btn btn-success" type="submit" name="submit">Input Data</button>
+            </div>
+            <div class="col-md-6">
+            <button class="btn btn-success" type="submit" name="submit">Input Data</button>
+            </div>
         </form>
         </div>
         </div>
