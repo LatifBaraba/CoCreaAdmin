@@ -102,10 +102,10 @@ $gambar = query("SELECT * FROM slider");
                             <li>
                                 <a href="gallery.php"><i class="fa fa-picture-o"></i>Update Album 'Our Space'</a>
                             </li>
-                            <li>
+                            <!-- <li>
                                <a href="profilepicture.html"><i class="fa fa-user"></i>Update Your Profile Picture</a> 
 
-                            </li> 
+                            </li>  -->
                         </ul>
                     </li>
                     <?php if(!isset($_SESSION['login']))

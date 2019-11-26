@@ -152,10 +152,10 @@ if (isset($_POST['confirm'])) {
                             <li>
                                 <a href="gallery.php"><i class="fa fa-picture-o"></i>Update Album</a>
                             </li>
-                            <li>
+                            <!-- <li>
                                <a href="profilepicture.html"><i class="fa fa-user"></i>Update Your Profile Picture</a> 
 
-                            </li> 
+                            </li>  -->
                         </ul>
                     </li>
                     <?php if(!isset($_SESSION['login']))
@@ -240,58 +240,44 @@ if (isset($_POST['confirm'])) {
                 endif; 
                 unset($_SESSION['rubahpass']);
                 ?>
-                
+            
             <form action="" method="post" enctype="multipart/form-data">
+            <div class="filler-user">
             <input type="hidden" name="id" value="<?= $sql["id"];?>">
             <div class="row">
-                <div class="col-xs-3">
                 <div class="form-group">
-                    <label for="username">Username  </label>
+                    <label for="username">Username </label>
                 </div>
-                </div>
-                <div class="col-xs-8">
-                    <input type="text" name="username" id="username" required value="<?= $sql["username"];?>">
-                </div>
+                <input type="text" name="username" id="username" required value="<?= $sql["username"];?>">
             </div>
             <div class="row">
-                <div class="col-xs-2">
                     <div class="form-group">
-                        <label for="email">Email  </label>
+                        <label for="email">Email </label>
                     </div>
-                </div>
-                <div class="col-xs-8">
                     <input type="text" size="40" name="email" id="email" required value="<?= $sql["email"];?>">
-                </div>
             </div>
             <div class="row">
-                <div class="col-xs-2">
                     <div class="form-group">
-                        <label for="alamat">Address  </label>
+                        <label for="alamat">Address </label>
                     </div>
-                </div>
-                <div class="col-xs-8">
                     <input type="text" size="40" name="alamat" id="alamat" required value="<?= $sql["alamat"];?>">
-                </div>
             </div>
             <div class="row">
-                <div class="col-xs-5">
                     <div class="form-group">
-                        <label for="telepon">Number Phone  </label>
+                        <label for="telepon">Number Phone </label>
                     </div>
-                </div>
-                <div class="col-xs-7">
-                <input type="text" size="20" name="telepon" id="telepon" required value="<?= $sql["telepon"];?>">
-                </div>
+                    <input type="text" size="20" name="telepon" id="telepon" required value="<?= $sql["telepon"];?>">
             </div>
             <button class="btn btn-success" type="submit" name="submit">Edit Data</button>
             
             <button id="more" class="btn btn-info">Change Password</button>
+        </div>
             
             <div class="formpass">
             <div id="moreField" style="display:none;">
                 <div class="form-group">
                     <div class="row">
-                            <div class="col-xs-5">
+                            <div class="col-xs-3">
                                     <label for="password">New Password : </label>
                             </div>
                             <div class="col-xs-7">
