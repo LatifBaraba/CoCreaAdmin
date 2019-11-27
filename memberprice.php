@@ -150,7 +150,7 @@ $a = query("SELECT * FROM memberprice");
                     <th>Member & Price 1</th>
                 </thead>
                         <tr>    <td><?php echo $a[0]['judul'];?></td>     </tr>
-                        <tr>    <td><?php echo $a[0]['harga'];?></td>     </tr>
+                        <tr>    <td><?php echo rupiah($a[0]['harga']);?></td>     </tr>
                         <tr>    <td><?php echo $a[0]['fitur1'];?></td>     </tr>
                         <tr>    <td><?php echo $a[0]['fitur2'];?></td>     </tr>
                         <tr>    <td><?php echo $a[0]['fitur3'];?></td>     </tr>
@@ -166,7 +166,7 @@ $a = query("SELECT * FROM memberprice");
                     <th>Member & Price 2</th>
                 </thead>
                         <tr>    <td><?php echo $a[1]['judul'];?></td>     </tr>
-                        <tr>    <td><?php echo $a[1]['harga'];?></td>     </tr>
+                        <tr>    <td><?php echo rupiah($a[1]['harga']);?></td>     </tr>
                         <tr>    <td><?php echo $a[1]['fitur1'];?></td>     </tr>
                         <tr>    <td><?php echo $a[1]['fitur2'];?></td>     </tr>
                         <tr>    <td><?php echo $a[1]['fitur3'];?></td>     </tr>
@@ -183,7 +183,7 @@ $a = query("SELECT * FROM memberprice");
                     <th>Member & Price 3</th>
                 </thead>
                         <tr>    <td><?php echo $a[2]['judul'];?></td>     </tr>
-                        <tr>    <td><?php echo $a[2]['harga'];?></td>     </tr>
+                        <tr>    <td><?php echo rupiah($a[2]['harga']);?></td>     </tr>
                         <tr>    <td><?php echo $a[2]['fitur1'];?></td>     </tr>
                         <tr>    <td><?php echo $a[2]['fitur2'];?></td>     </tr>
                         <tr>    <td><?php echo $a[2]['fitur3'];?></td>     </tr>
@@ -199,7 +199,7 @@ $a = query("SELECT * FROM memberprice");
                     <th>Member & Price 4</th>
                 </thead>
                         <tr>    <td><?php echo $a[3]['judul'];?></td>     </tr>
-                        <tr>    <td><?php echo $a[3]['harga'];?></td>     </tr>
+                        <tr>    <td><?php echo rupiah($a[3]['harga']);?></td>     </tr>
                         <tr>    <td><?php echo $a[3]['fitur1'];?></td>     </tr>
                         <tr>    <td><?php echo $a[3]['fitur2'];?></td>     </tr>
                         <tr>    <td><?php echo $a[3]['fitur3'];?></td>     </tr>

@@ -23,19 +23,9 @@ if (isset($_POST["submit"])){
     
     // cek apakah data diedit atau tidak
     if(editmemberprice()> 0){
-        echo "<script>
-             alert('Changes Succsess');
-             document.location.href = 'memberprice.php';
-             </script>";
-        // $_SESSION['berhasileditgambar']= 1 ;
-    }else{
-        // header('Location: editgambar.php?id='.$id);
-        //$_SESSION["edited"] = 1;
-        // var_dump($_SESSION["edited"]);
-        // echo "<script>
-        //      alert('Changes Failed');
-        //      document.location.href = 'edituser.php?id='.$id);
-        //       </script>";
+    $sql = query("SELECT * FROM memberprice WHERE id = $id")[0];
+  
+        $_SESSION['berhasileditmemberprice']= 1 ;
     }
     
 }
@@ -166,7 +156,20 @@ if (isset($_POST["submit"])){
                         <h3 class="page-head-line">Membership & Price</h3>
                     </div>
                 </div> 
-            
+                    <!-- NOTIFICATION -->
+
+                    <?php 
+                        if( isset($_SESSION["berhasileditmemberprice"]) == 1 ) : ?>
+                        <div class="alert alert-success fade in" role="alert">
+                            Change Success <a href="memberprice.php" class="alert-link">back to Member & Price Page</a>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <?php
+                        endif; 
+                    unset($_SESSION['berhasileditmemberprice']);
+                    ?>
                 <!-- /. PAGE INNER  -->
                 <div class="filler-member">
                         <form action="" enctype="multipart/form-data" method="post">
