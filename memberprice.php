@@ -11,9 +11,8 @@ require 'function.php';
 
 $g = query("SELECT * FROM logo ORDER BY id DESC LIMIT 1");
 
-$gambar = query("SELECT * FROM slider");
-
-// var_dump($gambar);
+$a = query("SELECT * FROM memberprice");
+// var_dump($a);
 
 ?>
 
@@ -142,75 +141,75 @@ $gambar = query("SELECT * FROM slider");
                 </div> 
             
             <!-- /. PAGE INNER  -->
-            <div class="filler-user">
-                <form action="" enctype="multipart/form-data" method="post">
-                <div class="col-md-5">
-                <div class="row">
-                        <div class="form-group">
-                        <label for="username">Header </label>
-                    </div>
-                    <input type="text" size="40" name="judul" id="judul" placeholder="Days Membership" required>
-                </div>   
+        <div class="filler-member">
+        <!-- <form action="" enctype="multipart/form-data" method="post"> -->
+         <div class="col-md-12">   
+        <div class="col-md-6">
+            <table class="table table-striped table-member">
+                <thead class="thead-user">
+                    <th>Member & Price 1</th>
+                </thead>
+                        <tr>    <td><?php echo $a[0]['judul'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[0]['harga'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[0]['fitur1'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[0]['fitur2'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[0]['fitur3'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[0]['fitur4'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[0]['fitur5'];?></td>     </tr>
+            </table>
+            <a href="editmemberprice.php?id=<?php echo $a[0]["id"];?>"><button class="btn btn-info"><i class="fa fa-edit"></i> edit</button></a>
+        </div>
 
-                <div class="row">
-                        <div class="form-group">
-                        <label for="email">Price </label>
-                        </div>
-                        <input type="text" size="15" name="email" id="email" placeholder="10">
-                </div>  
-
-                <div class="row">
-                        <div class="form-group">
-                        <label for="alamat">Address </label>
-                    </div>
-                    <input type="text" size="30" name="alamat" id="alamat" placeholder="Jl. Cisitu Indah" required>
-                </div> 
-                <button class="btn btn-success" type="submit" name="submit">Input Data</button>
-                <button class="btn btn-info" type="submit" name="submit">Discount</button>
-
-                </div>
-                
-                <div class="col-md-5">
-
-                <div class="row  add-user">
-                        <div class="form-group">
-                        <label for="fitur1">Feature </label>
-                        <label>1</label>
-                    </div>
-                    <input type="text" size="60" name="fitur1" id="fitur1" placeholder="High Speed Connection">
-                </div>              
-                <div class="row  add-user">
-                        <div class="form-group">
-                        <label for="fitur1">Feature </label>
-                        <label>2</label>
-                    </div>
-                    <input type="text" size="60" name="fitur1" id="fitur1" placeholder="High Speed Connection">
-                </div>              
-                <div class="row  add-user">
-                        <div class="form-group">
-                        <label for="fitur1">Feature </label>
-                        <label>3</label>
-                    </div>
-                    <input type="text" size="60" name="fitur1" id="fitur1" placeholder="High Speed Connection">
-                </div>              
-                <div class="row  add-user">
-                        <div class="form-group">
-                        <label for="fitur1">Feature </label>
-                        <label>4</label>
-                    </div>
-                    <input type="text" size="60" name="fitur1" id="fitur1" placeholder="High Speed Connection">
-                </div>              
-                <div class="row  add-user">
-                        <div class="form-group">
-                        <label for="fitur1">Feature </label>
-                        <label>5</label>
-                    </div>
-                    <input type="text" size="60" name="fitur1" id="fitur1" placeholder="High Speed Connection">
-                </div>              
-            </div>
-            <!-- <div class="col-md-12">
-            </div> -->
-        </form>
+        <div class="col-md-6">
+            <table class="table table-striped table-member">
+                <thead class="thead-user">
+                    <th>Member & Price 2</th>
+                </thead>
+                        <tr>    <td><?php echo $a[1]['judul'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[1]['harga'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[1]['fitur1'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[1]['fitur2'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[1]['fitur3'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[1]['fitur4'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[1]['fitur5'];?></td>     </tr>
+            </table>
+            <a href="editmemberprice.php?id=<?php echo $a[1]["id"];?>"><button class="btn btn-info"><i class="fa fa-edit"></i> edit</button></a>
+        </div>
+        </div>
+        <div class="col-md-12">
+        <div class="col-md-6">
+            <table class="table table-striped table-member">
+                <thead class="thead-user">
+                    <th>Member & Price 3</th>
+                </thead>
+                        <tr>    <td><?php echo $a[2]['judul'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[2]['harga'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[2]['fitur1'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[2]['fitur2'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[2]['fitur3'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[2]['fitur4'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[2]['fitur5'];?></td>     </tr>
+            </table>
+            <a href="editmemberprice.php?id=<?php echo $a[2]["id"];?>"><button class="btn btn-info"><i class="fa fa-edit"></i> edit</button></a>
+        </div>
+            
+        <div class="col-md-6">
+            <table class="table table-striped table-member">
+                <thead class="thead-user">
+                    <th>Member & Price 4</th>
+                </thead>
+                        <tr>    <td><?php echo $a[3]['judul'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[3]['harga'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[3]['fitur1'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[3]['fitur2'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[3]['fitur3'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[3]['fitur4'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[3]['fitur5'];?></td>     </tr>
+            </table>
+            <a href="editmemberprice.php?id=<?php echo $a[3]["id"];?>"><button class="btn btn-info"><i class="fa fa-edit"></i> edit</button></a>
+        </div>
+        </div>
+        <!-- </form> -->
         </div>
 
         </div>

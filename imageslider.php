@@ -97,7 +97,7 @@ $gambar = query("SELECT * FROM slider");
                     </li>
 
                     <li>
-                        <a href="#"><i class="fa fa-camera "></i>Gallery <span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-camera"></i>Gallery <span class="fa arrow"></span></a>
                          <ul class="nav nav-second-level">
                             <li>
                                 <a href="gallery.php"><i class="fa fa-picture-o"></i>Update Album</a>

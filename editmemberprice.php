@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 if(!isset($_SESSION["login"])){
@@ -6,65 +7,40 @@ if(!isset($_SESSION["login"])){
     exit;
 }
 
-if(isset($_SESSION["userlogin"])){
-    header("Location: index-user.php");
-    exit;
-}
-
 require 'function.php';
 
-$id = $_GET["id"];
-// --
-// global $conn;   
-// --
-$sql = query("SELECT * FROM user WHERE id = $id")[0];
 $g = query("SELECT * FROM logo ORDER BY id DESC LIMIT 1");
 
-        // var_dump($sql);
+$id = $_GET["id"];
 
+$sql = query("SELECT * FROM memberprice WHERE id = $id")[0];
+var_dump($sql);
+
+// var_dump($_POST);
 if (isset($_POST["submit"])){
-
-        // cek email validation
-        $id = $_POST['id'];
-        $email  = $_POST['email'];
-        $emailB = filter_var($email, FILTER_SANITIZE_EMAIL);
-        
-        if (filter_var($emailB, FILTER_VALIDATE_EMAIL) === false ||
-            $emailB != $email
-        ) {
-            // echo "<script>
-            //      alert('Email is invalid!');
-            //      document.location.href = 'edituser.php?id='".$id.";
-            //      </script>";
-            
-            $_SESSION["edited"] = 1;
-            header('Location: edituser.php?id='.$id);
-            exit();
-        }  
     
-        // cek apakah data diedit atau tidak
-        if(edituser($_POST)> 0){
-            // echo "<script>
-            //      alert('Changes Succsess');
-            //      document.location.href = 'index-admin.php';
-            //      </script>";
-            $_SESSION['edituserberhasil'] = 1 ;
-        }else{
-            $_SESSION["edited"] = 1;
-            header('Location: edituser.php?id='.$id);
-            // echo "<script>
-            //      alert('Changes Failed');
-            //      document.location.href = 'edituser.php?id='.$id);
-            //       </script>";
-        } 
+    $id = $_POST['id'];
+    
+    // cek apakah data diedit atau tidak
+    if(editmemberprice()> 0){
+        echo "<script>
+             alert('Changes Succsess');
+             document.location.href = 'memberprice.php';
+             </script>";
+        // $_SESSION['berhasileditgambar']= 1 ;
+    }else{
+        // header('Location: editgambar.php?id='.$id);
+        //$_SESSION["edited"] = 1;
+        // var_dump($_SESSION["edited"]);
+        // echo "<script>
+        //      alert('Changes Failed');
+        //      document.location.href = 'edituser.php?id='.$id);
+        //       </script>";
     }
-
-if (isset($_POST['confirm'])) {
-    # Publish-button was clicked
-    if(changepass($_POST)>0) {
-        $_SESSION['rubahpass']= 1 ;
-    }
+    
 }
+
+
 ?>
 
 
@@ -97,7 +73,7 @@ if (isset($_POST['confirm'])) {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-
+                
                 <?php if(isset($_SESSION['userlogin'])){ ?>
                     <a class='navbar-brand' href='index-user.php'><img src='./assets/img/<?php echo $g[0]['gambar']?>' id='logo' width='50'></a>
                 <?php }?> 
@@ -163,7 +139,7 @@ if (isset($_POST['confirm'])) {
                             </li>
                         </ul>
                     </li>
-
+                    
                     <?php if(!isset($_SESSION['login']))
                     echo " <li>
                     <a href='login.php'><i class='fa fa-sign-in'></i>Login Page</a>
@@ -181,131 +157,104 @@ if (isset($_POST['confirm'])) {
        
         <!-- /. NAV SIDE  -->
 
-
+        
         <div id="page-wrapper">
             <div id="page-inner">
                 <div class="row ">
                     <div class="col-md-12">
                         <!-- <h1 class="page-head-line">CO CREATIVE ADMIN SITE</h1> -->
-                        <h3 class="page-head-line">EDIT USER</h3>
-                
-                <?php 
-                if( isset($_SESSION["edituserberhasil"]) == 1 ) : ?>
-                <div class="alert alert-success fade in" role="alert">Edit Data Success <a href="index-admin.php" class="alert-link"> back to Dashboard</a>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>    
-                </div>
-                <?php
-                endif; 
-                unset($_SESSION['edituserberhasil']);
-                ?>
-
+                        <h3 class="page-head-line">Membership & Price</h3>
                     </div>
                 </div> 
-                <!-- CONTENT DI SINI CUY -->
+            
+                <!-- /. PAGE INNER  -->
+                <div class="filler-member">
+                        <form action="" enctype="multipart/form-data" method="post">
+        <input type="hidden" name="id" value="<?= $sql["id"];?>">
+        <div class="col-md-5">
+                <div class="row">
+                        <div class="form-group">
+                        <label for="username">Header </label>
+                    </div>
+                    <input type="text" size="40" name="judul" id="judul" required value="<?= $sql["judul"];?>">
+                </div>   
 
-                <?php 
-                // var_dump($_SESSION["edited"]);  
-                if( isset($_SESSION["edited"]) == 1 ) : ?>
-                <div class="alert alert-danger fade in" role="alert">
-                Email Is Invalid !
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <div class="row">
+                        <div class="form-group">
+                        <label for="email">Price </label>
+                        </div>
+                        <input type="text" size="40" name="harga" id="harga" required value="<?= $sql["harga"];?>">
+
+                </div>  
+
+                <!-- <button class="btn btn-info" type="submit" id="more"><i class='fa fa-tag'></i>  Discount</button> -->
+                
+                <div id="moreField" style="display:none;">
+                <div class="form-group">
+                <div class="row">
+                        <div class="form-group">
+                        <label for="diskon">Discount </label>
+                    </div>
+                    <input type="text" size="5" name="diskon" id="diskon" placeholder="7.5">
+                </div>
+                </div>
+                    <!-- <button class="btn btn-success btn-confirmpass" type="submit" name="confirm" value="confirm">Confirm Change</button> -->
+                </div>
                 </div>
                 
-                <?php
-                //$_SESSION["edited"] = 0; 
-                 endif; 
-                 unset($_SESSION['edited']);
-                ?>
+                <div class="col-md-5">
 
-                <?php 
-                if( isset($_SESSION["passtidaksama"]) == 1 ) : ?>
-                <div class="alert alert-danger fade in" role="alert">
-                Password not match !
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <div class="row  add-user">
+                        <div class="form-group">
+                        <label for="fitur1">Feature </label>
+                        <label>1</label>
+                    </div>
+                    <input type="text" size="40" name="fitur1" id="fitur1" required value="<?= $sql["fitur1"];?>">
+                </div>              
+                <div class="row  add-user">
+                        <div class="form-group">
+                        <label for="fitur1">Feature </label>
+                        <label>2</label>
+                    </div>
+                    <input type="text" size="40" name="fitur2" id="fitur2" required value="<?= $sql["fitur2"];?>">
+                </div>              
+                <div class="row  add-user">
+                        <div class="form-group">
+                        <label for="fitur1">Feature </label>
+                        <label>3</label>
+                    </div>
+                    <input type="text" size="40" name="fitur3" id="fitur3" required value="<?= $sql["fitur3"];?>">
+                </div>              
+                <div class="row  add-user">
+                        <div class="form-group">
+                        <label for="fitur1">Feature </label>
+                        <label>4</label>
+                    </div>
+                    <input type="text" size="40" name="fitur4" id="fitur4" value="<?= $sql["fitur4"];?>">
+                </div>              
+                <div class="row  add-user">
+                        <div class="form-group">
+                        <label for="fitur1">Feature </label>
+                        <label>5</label>
+                    </div>
+                    <input type="text" size="40" name="fitur5" id="fitur5" value="<?= $sql["fitur5"];?>">
+                </div>              
+            </div>
+            <div class="btnsubmit-member">
+                <div class="col-md-12">
+                    <button class="btn btn-success" type="submit" name="submit">Input Data</button>
                 </div>
-                <?php
-                endif; 
-                unset($_SESSION['passtidaksama']);
-                ?>
+            </div>
+            <!-- <button type="submit" formmethod="post">Input</button> -->
 
-                <?php 
-                if( isset($_SESSION["rubahpass"]) == 1 ) : ?>
-                <div class="alert alert-success fade in" role="alert">
-                    Change Success <a href="index-admin.php" class="alert-link">back to Dashboard</a>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-                <?php
-                endif; 
-                unset($_SESSION['rubahpass']);
-                ?>
-            
-            <form action="" method="post" enctype="multipart/form-data">
-        <div class="filler-user">
-            <input type="hidden" name="id" value="<?= $sql["id"];?>">
-            <div class="row">
-                <div class="form-group">
-                    <label for="username">Username </label>
-                </div>
-                <input type="text" name="username" id="username" required value="<?= $sql["username"];?>">
-            </div>
-            <div class="row">
-                    <div class="form-group">
-                        <label for="email">Email </label>
-                    </div>
-                    <input type="text" size="40" name="email" id="email" required value="<?= $sql["email"];?>">
-            </div>
-            <div class="row">
-                    <div class="form-group">
-                        <label for="alamat">Address </label>
-                    </div>
-                    <input type="text" size="40" name="alamat" id="alamat" required value="<?= $sql["alamat"];?>">
-            </div>
-            <div class="row">
-                    <div class="form-group">
-                        <label for="telepon">Number Phone </label>
-                    </div>
-                    <input type="text" size="20" name="telepon" id="telepon" required value="<?= $sql["telepon"];?>">
-            </div>
-            <button class="btn btn-success" type="submit" name="submit">Edit Data</button>
-            
-            <button id="more" class="btn btn-info">Change Password</button>
-            
-            <div class="formpass">
-            <div id="moreField" style="display:none;">
-                <div class="form-group">
-                    <div class="row">
-                        <div class="form-group">
-                            <label for="alamat">New Password </label>
-                        </div>
-                        <input type="password" size="20" name="password" id="password" placeholder="New Password">
-                    </div>
-                    <div class="row">
-                        <div class="form-group">
-                            <label for="alamat">Confirm Password </label>
-                        </div>
-                        <input type="password2" size="20" name="password2" id="password2" placeholder="Confirm Password">
-                    </div>
-                </div>
-                    <button class="btn btn-success btn-confirmpass" type="submit" name="confirm" value="confirm">Confirm Change</button>
-                </div>
-            </form>
+        </form>
         </div>
-      </div>
-            </div>
-            <!-- /. PAGE INNER  -->
+
         </div>
+        
         <!-- /. PAGE WRAPPER  -->
     </div>
     <!-- /. WRAPPER  -->
-
     <div id="footer-sec">
         &copy; 2014 YourCompany | Design By : <a href="http://www.binarytheme.com/" target="_blank">BinaryTheme.com</a>
     </div>

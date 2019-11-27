@@ -534,4 +534,37 @@ function kirimemail($post){
     }
 }
 
+function editmemberprice(){
+        global $conn;
+
+        $id = $_POST["id"];
+        
+        // ambil data dari tiap elemen dalam form
+        $judul = htmlspecialchars($_POST["judul"],ENT_QUOTES);
+        $harga = htmlspecialchars($_POST["harga"], ENT_QUOTES);
+        $fitur1 = htmlspecialchars($_POST["fitur1"], ENT_QUOTES);
+        $fitur2 = htmlspecialchars($_POST["fitur2"], ENT_QUOTES);
+        $fitur3 = htmlspecialchars($_POST["fitur3"], ENT_QUOTES);
+        $fitur4 = htmlspecialchars($_POST["fitur4"], ENT_QUOTES);
+        $fitur5 = htmlspecialchars($_POST["fitur5"], ENT_QUOTES);
+        
+    
+        // query insert data
+        $query = "UPDATE memberprice SET
+                    judul = '$judul',
+                    harga = '$harga',
+                    fitur1 = '$fitur1',
+                    fitur2 = '$fitur2',
+                    fitur3 = '$fitur3',
+                    fitur4 = '$fitur4',
+                    fitur5 = '$fitur5'
+                WHERE id = '$id';
+        ";
+        mysqli_query($conn,$query);
+    
+        // var_dump($judul);
+        // var_dump($query);
+    
+        return mysqli_affected_rows($conn);
+    }
 ?>
