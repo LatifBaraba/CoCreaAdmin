@@ -150,14 +150,16 @@ $a = query("SELECT * FROM memberprice");
                     <th>Member & Price 1</th>
                 </thead>
                         <tr>    <td><?php echo $a[0]['judul'];?></td>     </tr>
+                        <tr>    <td><?php echo rupiah($a[0]['hargalama']);?></td>     </tr>
                         <tr>    <td><?php echo rupiah($a[0]['harga']);?></td>     </tr>
+                        <tr>    <td><?php echo $a[0]['diskon'];?> %</td>     </tr>
                         <tr>    <td><?php echo $a[0]['fitur1'];?></td>     </tr>
                         <tr>    <td><?php echo $a[0]['fitur2'];?></td>     </tr>
                         <tr>    <td><?php echo $a[0]['fitur3'];?></td>     </tr>
                         <tr>    <td><?php echo $a[0]['fitur4'];?></td>     </tr>
                         <tr>    <td><?php echo $a[0]['fitur5'];?></td>     </tr>
             </table>
-            <a href="editmemberprice.php?id=<?php echo $a[0]["id"];?>"><button class="btn btn-info"><i class="fa fa-edit"></i> edit</button></a>
+            <button class="btn btn-info" onclick="location.href='editmemberprice.php?id=<?php echo $a[0]['id'];?>'"><i class="fa fa-edit"></i> edit</button>
         </div>
 
         <div class="col-md-6">
@@ -166,14 +168,16 @@ $a = query("SELECT * FROM memberprice");
                     <th>Member & Price 2</th>
                 </thead>
                         <tr>    <td><?php echo $a[1]['judul'];?></td>     </tr>
+                        <tr>    <td><?php echo rupiah($a[1]['hargalama']);?></td>     </tr>
                         <tr>    <td><?php echo rupiah($a[1]['harga']);?></td>     </tr>
+                        <tr>    <td><?php echo $a[1]['diskon'];?> %</td>     </tr>
                         <tr>    <td><?php echo $a[1]['fitur1'];?></td>     </tr>
                         <tr>    <td><?php echo $a[1]['fitur2'];?></td>     </tr>
                         <tr>    <td><?php echo $a[1]['fitur3'];?></td>     </tr>
                         <tr>    <td><?php echo $a[1]['fitur4'];?></td>     </tr>
                         <tr>    <td><?php echo $a[1]['fitur5'];?></td>     </tr>
             </table>
-            <a href="editmemberprice.php?id=<?php echo $a[1]["id"];?>"><button class="btn btn-info"><i class="fa fa-edit"></i> edit</button></a>
+            <button class="btn btn-info" onclick="location.href='editmemberprice.php?id=<?php echo $a[1]['id'];?>'"><i class="fa fa-edit"></i> edit</button>
         </div>
         </div>
         <div class="col-md-12">
@@ -183,14 +187,16 @@ $a = query("SELECT * FROM memberprice");
                     <th>Member & Price 3</th>
                 </thead>
                         <tr>    <td><?php echo $a[2]['judul'];?></td>     </tr>
+                        <tr>    <td><?php echo rupiah($a[2]['hargalama']);?></td>     </tr>
                         <tr>    <td><?php echo rupiah($a[2]['harga']);?></td>     </tr>
+                        <tr>    <td><?php echo $a[2]['diskon'];?> %</td>     </tr>
                         <tr>    <td><?php echo $a[2]['fitur1'];?></td>     </tr>
                         <tr>    <td><?php echo $a[2]['fitur2'];?></td>     </tr>
                         <tr>    <td><?php echo $a[2]['fitur3'];?></td>     </tr>
                         <tr>    <td><?php echo $a[2]['fitur4'];?></td>     </tr>
                         <tr>    <td><?php echo $a[2]['fitur5'];?></td>     </tr>
             </table>
-            <a href="editmemberprice.php?id=<?php echo $a[2]["id"];?>"><button class="btn btn-info"><i class="fa fa-edit"></i> edit</button></a>
+            <button class="btn btn-info" onclick="location.href='editmemberprice.php?id=<?php echo $a[2]['id'];?>'"><i class="fa fa-edit"></i> edit</button>
         </div>
             
         <div class="col-md-6">
@@ -199,14 +205,16 @@ $a = query("SELECT * FROM memberprice");
                     <th>Member & Price 4</th>
                 </thead>
                         <tr>    <td><?php echo $a[3]['judul'];?></td>     </tr>
+                        <tr>    <td><?php echo rupiah($a[3]['hargalama']);?></td>     </tr>
                         <tr>    <td><?php echo rupiah($a[3]['harga']);?></td>     </tr>
+                        <tr>    <td><?php echo $a[3]['diskon'];?> %</td>     </tr>
                         <tr>    <td><?php echo $a[3]['fitur1'];?></td>     </tr>
                         <tr>    <td><?php echo $a[3]['fitur2'];?></td>     </tr>
                         <tr>    <td><?php echo $a[3]['fitur3'];?></td>     </tr>
                         <tr>    <td><?php echo $a[3]['fitur4'];?></td>     </tr>
                         <tr>    <td><?php echo $a[3]['fitur5'];?></td>     </tr>
             </table>
-            <a href="editmemberprice.php?id=<?php echo $a[3]["id"];?>"><button class="btn btn-info"><i class="fa fa-edit"></i> edit</button></a>
+            <button class="btn btn-info" onclick="location.href='editmemberprice.php?id=<?php echo $a[3]['id'];?>'"><i class="fa fa-edit"></i> edit</button>
         </div>
         </div>
         <!-- </form> -->

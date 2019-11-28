@@ -7,6 +7,10 @@ if(!isset($_SESSION["login"])){
     exit;
 }
 
+// if(!isset($_POST["submit"]) && isset($_SESSION["pricedisc"])){
+//     unset($_SESSION['pricedisc']);
+// }
+
 require 'function.php';
 
 $g = query("SELECT * FROM logo ORDER BY id DESC LIMIT 1");
@@ -14,20 +18,29 @@ $g = query("SELECT * FROM logo ORDER BY id DESC LIMIT 1");
 $id = $_GET["id"];
 
 $sql = query("SELECT * FROM memberprice WHERE id = $id")[0];
-var_dump($sql);
+// var_dump($sql);
 
-// var_dump($_POST);
 if (isset($_POST["submit"])){
-    
+    // var_dump($_POST);
     $id = $_POST['id'];
+    $hargalama = $_POST['hargalama'];
+    $diskon = $_POST['diskon'];
     
-    // cek apakah data diedit atau tidak
-    if(editmemberprice()> 0){
-    $sql = query("SELECT * FROM memberprice WHERE id = $id")[0];
-  
-        $_SESSION['berhasileditmemberprice']= 1 ;
+    $pricenew = $hargalama;
+    // $_SESSION['adahargalama']= 0;
+
+    if($_POST['diskon'] !=0) {
+
+        $pricedisc = diskon();
+        $pricenew = $pricedisc;
+        //$_SESSION['pricedisc'] = $pricedisc;
     }
-    
+    // var_dump($pricenew);
+    // var_dump(editmemberprice($pricenew));
+        if(editmemberprice($pricenew)> 0){
+        $sql = query("SELECT * FROM memberprice WHERE id = $id")[0];            
+            $_SESSION['berhasileditmemberprice']= 1 ;
+        }
 }
 
 
@@ -181,16 +194,24 @@ if (isset($_POST["submit"])){
                     </div>
                     <input type="text" size="40" name="judul" id="judul" required value="<?= $sql["judul"];?>">
                 </div>   
+                
+                <div class="row">
+                        <div class="form-group">
+                        <label for="hargalama">Old Price </label>
+                        </div>
+                        <input type="text" size="40" name="hargalama" id="hargalama" required value="<?= $sql["hargalama"];?>">
+ 
+                </div>  
 
                 <div class="row">
                         <div class="form-group">
                         <label for="email">Price </label>
                         </div>
-                        <input type="text" size="40" name="harga" id="harga" required value="<?= $sql["harga"];?>">
+                        <input type="text" size="40" name="harga" id="harga" disabled value="<?= $sql["harga"];?>">
 
                 </div>  
 
-                <!-- <button class="btn btn-info" type="submit" id="more"><i class='fa fa-tag'></i>  Discount</button> -->
+                <button class="btn btn-info" type="submit" id="more"><i class='fa fa-tag'></i> Discount</button>
                 
                 <div id="moreField" style="display:none;">
                 <div class="form-group">
@@ -198,7 +219,7 @@ if (isset($_POST["submit"])){
                         <div class="form-group">
                         <label for="diskon">Discount </label>
                     </div>
-                    <input type="text" size="5" name="diskon" id="diskon" placeholder="7.5">
+                    <input type="text" size="5" name="diskon" id="diskon" placeholder="7.5" value="<?= $sql["diskon"];?>">
                 </div>
                 </div>
                     <!-- <button class="btn btn-success btn-confirmpass" type="submit" name="confirm" value="confirm">Confirm Change</button> -->
