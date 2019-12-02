@@ -1200,6 +1200,28 @@ ul.external li a:hover {
     padding: 28px 0;
 }
 
+#garisdua {
+    position: relative;
+    display: inline-block;
+}
+#garisdua::before, #garisdua::after {
+    content: '';
+    width: 100%;
+    position: absolute;
+    right: 0;
+    top: 50%;
+}
+#garisdua::before {
+    border-bottom: 2px solid #878787;
+    -webkit-transform: skewY(-10deg);
+    transform: skewY(-10deg);
+}
+#garisdua::after {
+    border-bottom: 2px solid #878787;
+    -webkit-transform: skewY(10deg);
+    transform: skewY(10deg);
+}
+
 /*PRICE BODY CODE START*/
 
 #generic_price_table .generic_content{

@@ -717,17 +717,19 @@ $memper = query("SELECT * FROM memberprice");
                             <!--PRICE START-->
                             <div class="generic_price_tag clearfix">	
                                 <span class="price">
-								<span class="<?=
+								<span id="garisdua" class="<?=
 									$memper[0]['hargalama'] > $memper[0]['harga']?'cent':'currency'; 
 									?>">
 									<span><?= rupiah($memper[0]['hargalama']);?></span>
-									</span><br>
+								</span><br>
+									<span id="garistiga">
 								<?php 
 										if( $memper[0]['hargalama'] > $memper[0]['harga'] ) : ?>
                                     	<span class="currency"><?= rupiah($memper[0]['harga']);?></span>
 										<?php
 										endif; 
 								?>
+									</span>
                                     <!-- <span class="currency">150</span>
 									<span class="cent">.000</span>
 									 -->
@@ -787,17 +789,19 @@ $memper = query("SELECT * FROM memberprice");
                             <!--PRICE START-->
                             <div class="generic_price_tag clearfix">	
                                 <span class="price">
-								<span class="<?=
+								<span id="garisdua" class="<?=
 									$memper[1]['hargalama'] > $memper[1]['harga']?'cent':'currency'; 
 									?>">
 									<span><?= rupiah($memper[1]['hargalama']);?></span>
-									</span><br>
+								</span><br>
+									<span id="garistiga">
 								<?php 
 										if( $memper[1]['hargalama'] > $memper[1]['harga'] ) : ?>
                                     	<span class="currency"><?= rupiah($memper[1]['harga']);?></span>
 										<?php
 										endif; 
 								?>
+									</span>
                                     <!-- <span class="currency">145</span>
 									<span class="cent">.000</span> -->
 									<br>
@@ -859,17 +863,20 @@ $memper = query("SELECT * FROM memberprice");
                             <!--PRICE START-->
                             <div class="generic_price_tag clearfix">	
                                 <span class="price">
-								<span class="<?=
+								<span id="garisdua" class="<?=
 									$memper[2]['hargalama'] > $memper[2]['harga']?'cent':'currency'; 
 									?>">
 									<span><?= rupiah($memper[2]['hargalama']);?></span>
 									</span><br>
-								<?php 
+									<span id="garistiga">
+									<?php 
 										if( $memper[2]['hargalama'] > $memper[2]['harga'] ) : ?>
                                     	<span class="currency"><?= rupiah($memper[2]['harga']);?></span>
 										<?php
 										endif; 
-								?>
+									?>
+									</span>
+								
                                     <!-- <span class="currency">1.250</span>
                                     <span class="cent">.000</span> -->
                                     <span class="month">/Week</span>
@@ -928,17 +935,19 @@ $memper = query("SELECT * FROM memberprice");
                             <!--PRICE START-->
                             <div class="generic_price_tag clearfix">	
                                 <span class="price">
-								<span class="<?=
+								<span id="garisdua" class="<?=
 									$memper[3]['hargalama'] > $memper[3]['harga']?'cent':'currency'; 
 									?>">
 									<span><?= rupiah($memper[3]['hargalama']);?></span>
-									</span><br>
+								</span><br>
+									<span id="garistiga">
 								<?php 
 										if( $memper[3]['hargalama'] > $memper[3]['harga'] ) : ?>
                                     	<span class="currency"><?= rupiah($memper[3]['harga']);?></span>
 										<?php
 										endif; 
 								?>
+									</span>
                                     <!-- <span class="currency">4.000</span>
                                     <span class="cent">.000</span> -->
                                     <span class="month">/Mon</span>
