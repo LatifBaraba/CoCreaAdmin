@@ -150,15 +150,14 @@ function edituser($data) {
     $email = htmlspecialchars($data["email"]);
     $alamat = htmlspecialchars($data["alamat"]);
     $telepon = htmlspecialchars($data["telepon"]);
-    $password = mysqli_real_escape_string($conn, $data["password"]);
+    // $password = mysqli_real_escape_string($conn, $data["password"]);
 
         // query insert data
     $query = "UPDATE user SET
                 username = '$username',
                 email = '$email',
                 alamat = '$alamat',
-                telepon = '$telepon',
-                password = '$password'
+                telepon = '$telepon'
             WHERE id = '$id';
     ";
     mysqli_query($conn,$query);

@@ -291,12 +291,12 @@ if (isset($_POST['confirm'])) {
                         <div class="form-group">
                             <label for="alamat">Confirm Password </label>
                         </div>
-                        <input type="password2" size="20" name="password2" id="password2" placeholder="Confirm Password">
+                        <input type="password" size="20" name="password2" id="password2" placeholder="Confirm Password">
                     </div>
                 </div>
                     <button class="btn btn-success btn-confirmpass" type="submit" name="confirm" value="confirm">Confirm Change</button>
                 </div>
-            </form>
+            </div>
         </div>
       </div>
             </div>
