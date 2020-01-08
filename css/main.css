@@ -15,7 +15,7 @@
 /* =================================== */
 
 body {
-    background-color: #fff;
+    background-color: #FFFDDD;
     font-family: 'Open Sans', sans-serif;
     line-height: 24px;
     font-size: 16px;
@@ -62,7 +62,7 @@ main > section {
 }
 
 .btnbook {
-    background-color: #83A638;
+    background-color: #DD5500;
     color: white;
     margin: 10px;
     margin-left: 5px;
@@ -85,7 +85,7 @@ main > section {
 } */
 
 .btn-blue {
-    background-color: rgba(131, 166, 56, 1);
+    background-color: #DD5500;
     box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.15) inset;
     padding: 15px 55px;
     color: #fff;
@@ -300,7 +300,7 @@ main > section {
          -o-transition: all 0.8s ease 0s;
             transition: all 0.8s ease 0s;
 
-    background-color: rgba(0,0,0,0.6);
+    background-color: #1D11AA;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
     padding: 5px 0;
 }
@@ -575,7 +575,7 @@ h1.navbar-brand {
   background-image:url(../img/aboutheader.png);
   background-repeat: no-repeat;
   background-size: 100%; //propotional resize*/
-  background-color: #83A638;
+  background-color: #DD5500;
   /* margin-bottom: 100px;  */
     color: white;
 
@@ -2089,7 +2089,7 @@ textarea.form-control {
 }
 
 .portofolio {
-    background-color: #f6f6f6;
+    background-color: #FFFDDD;
 }
 
 /* --------------------- */
