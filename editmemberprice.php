@@ -7,26 +7,43 @@ if(!isset($_SESSION["login"])){
     exit;
 }
 
+// if(!isset($_POST["submit"]) && isset($_SESSION["pricedisc"])){
+//     unset($_SESSION['pricedisc']);
+// }
+
 require 'function.php';
 
 $g = query("SELECT * FROM logo ORDER BY id DESC LIMIT 1");
-if (isset($_POST["submit"])){
 
-        // cek apakah data ditambahkan atau tidak
-        if(tambah($_POST)> 0){
-            // echo "<script>
-            //      alert('data berhasil ditambahkan!');
-            //      document.location.href = 'index-admin.php';
-            //      </script>";
-            $_SESSION["logoberhasil"] = 1;
-        }else{
-            // echo "<script>
-            //      alert('data gagal ditambahkan!');
-            //      document.location.href = 'index-admin.php';
-            //       </script>";
-            $_SESSION["logogagal"] = 1;
-        }
+$id = $_GET["id"];
+
+$sql = query("SELECT * FROM memberprice WHERE id = $id")[0];
+// var_dump($sql);
+
+if (isset($_POST["submit"])){
+    // var_dump($_POST);
+    $id = $_POST['id'];
+    $hargalama = $_POST['hargalama'];
+    $diskon = $_POST['diskon'];
+    
+    $pricenew = $hargalama;
+    // $_SESSION['adahargalama']= 0;
+
+    if($_POST['diskon'] !=0) {
+
+        $pricedisc = diskon();
+        $pricenew = $pricedisc;
+        //$_SESSION['pricedisc'] = $pricedisc;
     }
+    // var_dump($pricenew);
+    // var_dump(editmemberprice($pricenew));
+        if(editmemberprice($pricenew)> 0){
+        $sql = query("SELECT * FROM memberprice WHERE id = $id")[0];            
+            $_SESSION['berhasileditmemberprice']= 1 ;
+        }
+}
+
+
 ?>
 
 
@@ -59,15 +76,15 @@ if (isset($_POST["submit"])){
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                
                 <?php if(isset($_SESSION['userlogin'])){ ?>
                     <a class='navbar-brand' href='index-user.php'><img src='./assets/img/<?php echo $g[0]['gambar']?>' id='logo' width='50'></a>
                 <?php }?> 
 
                 <?php if(!isset($_SESSION['userlogin'])){ ?>
                     <a class='navbar-brand' href='index-admin.php'><img src='./assets/img/<?php echo $g[0]['gambar']?>' id='logo' width='50'></a>
-                <?php }?> 
+                <?php }?>
                 
-                <!-- <img src="assets/img/logonew.png" alt="..." class="img-thumbnail"> -->
             </div>
 
             <div class="header-right">
@@ -125,7 +142,7 @@ if (isset($_POST["submit"])){
                             </li>
                         </ul>
                     </li>
-
+                    
                     <?php if(!isset($_SESSION['login']))
                     echo " <li>
                     <a href='login.php'><i class='fa fa-sign-in'></i>Login Page</a>
@@ -143,110 +160,125 @@ if (isset($_POST["submit"])){
        
         <!-- /. NAV SIDE  -->
 
-
+        
         <div id="page-wrapper">
             <div id="page-inner">
-                <div class="row">
+                <div class="row ">
                     <div class="col-md-12">
-                        <h1 class="page-head-line">UPDATE LOGO SECTION </h1>
+                        <!-- <h1 class="page-head-line">CO CREATIVE ADMIN SITE</h1> -->
+                        <h3 class="page-head-line">Membership & Price</h3>
                     </div>
-                </div>
-                <!-- /. ROW  -->
-                <!-- UPDATE LOGO -->
-
-            <div class="container">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
+                </div> 
+                    <!-- NOTIFICATION -->
 
                     <?php 
-                    if( isset($_SESSION["logoberhasil"]) == 1 ) : ?>
-                        <div class="alert alert-success" role="alert">Success added logo <a href="index-admin.php" class="alert-link">back to Dashboard</a>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>    
+                        if( isset($_SESSION["berhasileditmemberprice"]) == 1 ) : ?>
+                        <div class="alert alert-success fade in" role="alert">
+                            Change Success <a href="memberprice.php" class="alert-link">back to Member & Price Page</a>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
                         </div>
-                <?php
-                endif; 
-                    unset($_SESSION['logoberhasil']);
-                ?>
-                
-                <?php 
-                    if( isset($_SESSION["logogagal"]) == 1 ) : ?>
-                        <div class="alert alert-danger" role="alert">Failed added logo
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>    
-                        </div>
-                <?php
-                endif; 
-                    unset($_SESSION['logogagal']);
-                ?>
-
-                <?php 
-                    if( isset($_SESSION["uploadbukangambar"]) == 1 ) : ?>
-                        <div class="alert alert-danger" role="alert"><strong>Please upload a picture</strong> format (jpg, jpeg or png)
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>    
-                        </div>
-                <?php
-                endif; 
-                    unset($_SESSION['uploadbukangambar']);
-                ?>
-                
-
-                <?php 
-                    if( isset($_SESSION["uploadgambardulu"]) == 1 ) : ?>
-                        <div class="alert alert-danger" role="alert"><strong>Please upload a picture</strong>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>    
-                        </div>
-                <?php
-                endif; 
-                    unset($_SESSION['uploadgambardulu']);
-                ?>
-
-                <?php 
-                    if( isset($_SESSION["logoterlalubesar"]) == 1 ) : ?>
-                        <div class="alert alert-danger" role="alert"><strong>Picture size to large</strong> | under 2mb
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>    
-                        </div>
-                <?php
-                endif; 
-                    unset($_SESSION['logoterlalubesar']);
-                ?>
-                        
-                        <span class="input-group-text"></span>
-                  
-                    </div>    
-                
-                <form action="" enctype="multipart/form-data" method="post">
-
-                <!-- <div class="fileUpload btn btn-info"> -->
-                    <div class="upload-btn">
-                        <label><span>Choose file</span>            
-                            <input type="file" name="gambar" id="gambar" class="upload-btn" required>
-                        <!-- <label for="file">Choose a file</label> -->
-                        </label>
-                <!-- </label> -->
+                        <?php
+                        endif; 
+                    unset($_SESSION['berhasileditmemberprice']);
+                    ?>
+                <!-- /. PAGE INNER  -->
+                <div class="filler-member">
+                        <form action="" enctype="multipart/form-data" method="post">
+        <input type="hidden" name="id" value="<?= $sql["id"];?>">
+        <div class="col-md-5">
+                <div class="row">
+                        <div class="form-group">
+                        <label for="username">Header </label>
                     </div>
-                    <button class="btn btn-success btn-logosubmit" type="submit" name="submit">Upload Data</button>
-                </div>
-                <br>
-                <p style="font-style: italic; color: gray;">Picture size : under 2mb</p>
-                </form>
+                    <input type="text" size="40" name="judul" id="judul" required value="<?= $sql["judul"];?>">
+                </div>   
+                
+                <div class="row">
+                        <div class="form-group">
+                        <label for="hargalama">Old Price </label>
+                        </div>
+                        <input type="text" size="40" name="hargalama" id="hargalama" required value="<?= $sql["hargalama"];?>">
+ 
+                </div>  
 
-         <!-- SAMPE SINI -->
+                <div class="row">
+                        <div class="form-group">
+                        <label for="email">Price </label>
+                        </div>
+                        <input type="text" size="40" name="harga" id="harga" disabled value="<?= $sql["harga"];?>">
+
+                </div>  
+
+                <button class="btn btn-info" type="submit" id="more"><i class='fa fa-tag'></i> Discount</button>
+                
+                <div id="moreField" style="display:none;">
+                <div class="form-group">
+                <div class="row">
+                        <div class="form-group">
+                        <label for="diskon">Discount </label>
+                    </div>
+                    <input type="text" size="5" name="diskon" id="diskon" placeholder="7.5" value="<?= $sql["diskon"];?>">
+                </div>
+                </div>
+                    <!-- <button class="btn btn-success btn-confirmpass" type="submit" name="confirm" value="confirm">Confirm Change</button> -->
+                </div>
+                </div>
+                
+                <div class="col-md-5">
+
+                <div class="row  add-user">
+                        <div class="form-group">
+                        <label for="fitur1">Feature </label>
+                        <label>1</label>
+                    </div>
+                    <input type="text" size="40" name="fitur1" id="fitur1" required value="<?= $sql["fitur1"];?>">
+                </div>              
+                <div class="row  add-user">
+                        <div class="form-group">
+                        <label for="fitur1">Feature </label>
+                        <label>2</label>
+                    </div>
+                    <input type="text" size="40" name="fitur2" id="fitur2" required value="<?= $sql["fitur2"];?>">
+                </div>              
+                <div class="row  add-user">
+                        <div class="form-group">
+                        <label for="fitur1">Feature </label>
+                        <label>3</label>
+                    </div>
+                    <input type="text" size="40" name="fitur3" id="fitur3" required value="<?= $sql["fitur3"];?>">
+                </div>              
+                <div class="row  add-user">
+                        <div class="form-group">
+                        <label for="fitur1">Feature </label>
+                        <label>4</label>
+                    </div>
+                    <input type="text" size="40" name="fitur4" id="fitur4" value="<?= $sql["fitur4"];?>">
+                </div>              
+                <div class="row  add-user">
+                        <div class="form-group">
+                        <label for="fitur1">Feature </label>
+                        <label>5</label>
+                    </div>
+                    <input type="text" size="40" name="fitur5" id="fitur5" value="<?= $sql["fitur5"];?>">
+                </div>              
+            </div>
+            <div class="btnsubmit-member">
+                <div class="col-md-12">
+                    <button class="btn btn-success" type="submit" name="submit">Input Data</button>
+                </div>
+            </div>
+            <!-- <button type="submit" formmethod="post">Input</button> -->
+
+        </form>
         </div>
-            <!-- /. PAGE INNER  -->
+
         </div>
+        
         <!-- /. PAGE WRAPPER  -->
     </div>
     <!-- /. WRAPPER  -->
-
     <div id="footer-sec">
         &copy; 2014 YourCompany | Design By : <a href="http://www.binarytheme.com/" target="_blank">BinaryTheme.com</a>
     </div>

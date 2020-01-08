@@ -116,6 +116,15 @@ $g = query("SELECT * FROM logo ORDER BY id DESC LIMIT 1");
                             </li>  -->
                         </ul>
                     </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-tags "></i>Products <span class="fa arrow"></span></a>
+                         <ul class="nav nav-second-level">
+                            <li>
+                                <a href="memberprice.php"><i class="fa fa-money"></i>Member & Price</a>
+                            </li>
+                        </ul>
+                    </li>
                     
                     <?php if(!isset($_SESSION['login']))
                     echo " <li>

@@ -88,11 +88,10 @@ if(isset($_POST["kirim"])){
                                 <form role="form" action="" method="post" enctype="multipart/form-data">
                                        <br/>
                                         <div class="form-group input-group">
-                                            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
                                             <input type="text" class="form-control" name="email" id="email" placeholder="Your Email Address .."/>
                                         </div>
                                         <button class="btn btn-success" type="submit" name="kirim" value="kirim">Send Email</button>
-                                        <a href="login.php"><i class="fa fa-arrow-left" aria-hidden="true"></i> login</a>
+                                        <a href="login.php">login</a>
                                     </form>
                             </div>
                         </div>

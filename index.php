@@ -1,11 +1,20 @@
 <?php
 
-// session_start();
+session_start();
 
-// if(!isset($_SESSION["login"])){
-//     header("Location: login.php");
-//     exit;
+// if(isset($_SESSION["adahargalama1"])){
+// 	$_SESSION['adahargalama1']= 1;
 // }
+// if(isset($_SESSION["adahargalama2"])){
+// 	$_SESSION['adahargalama2']= 1 ;
+// }
+// if(isset($_SESSION["adahargalama3"])){
+// 	$_SESSION['adahargalama3']= 1 ;
+// }
+// if(isset($_SESSION["adahargalama4"])){
+// 	$_SESSION['adahargalama4']= 1 ;
+// }
+
 
 // if(isset($_POST['add'])){
 //     header("Location: adduser.php");
@@ -25,6 +34,7 @@ $gambar = query("SELECT * FROM slider");
 // var_dump($gambar);
 $gambar2 = query("SELECT * FROM gallery");
 // var_dump($gambar2);
+$memper = query("SELECT * FROM memberprice");
 ?>
 
 <!DOCTYPE html>
@@ -697,7 +707,7 @@ $gambar2 = query("SELECT * FROM gallery");
                             	<!--HEAD START-->
                                 <div class="head_bg"></div>
                                 <div class="head">
-                                    <span>Walk in 3 Hours</span>
+                                    <span><?= $memper[0]['judul'];?></span>
                                 </div>
                                 <!--//HEAD END-->
                                 
@@ -707,10 +717,23 @@ $gambar2 = query("SELECT * FROM gallery");
                             <!--PRICE START-->
                             <div class="generic_price_tag clearfix">	
                                 <span class="price">
-                                    <span class="sign">Rp.</span>
-                                    <span class="currency">150</span>
+								<span id="garisdua" class="<?=
+									$memper[0]['hargalama'] > $memper[0]['harga']?'cent':'currency'; 
+									?>">
+									<span><?= rupiah($memper[0]['hargalama']);?></span>
+								</span><br>
+									<span id="garistiga">
+								<?php 
+										if( $memper[0]['hargalama'] > $memper[0]['harga'] ) : ?>
+                                    	<span class="currency"><?= rupiah($memper[0]['harga']);?></span>
+										<?php
+										endif; 
+								?>
+									</span>
+                                    <!-- <span class="currency">150</span>
 									<span class="cent">.000</span>
-									<br>
+									 -->
+									 <br>
                                     <span class="month">/Hrs</span>
                                 </span>
                             </div>
@@ -756,10 +779,7 @@ $gambar2 = query("SELECT * FROM gallery");
                             	<!--HEAD START-->
                                 <div class="head_bg"></div>
                                 <div class="head">
-                                    <span>Daily </span>
-                                    <br/>
-
-                                    <span> 12 Hours</span>
+                                    <span><?= $memper[1]['judul'];?></span>
                                 </div>
                                 <!--//HEAD END-->
                                 
@@ -769,9 +789,21 @@ $gambar2 = query("SELECT * FROM gallery");
                             <!--PRICE START-->
                             <div class="generic_price_tag clearfix">	
                                 <span class="price">
-                                    <span class="sign">Rp.</span>
-                                    <span class="currency">145</span>
-									<span class="cent">.000</span>
+								<span id="garisdua" class="<?=
+									$memper[1]['hargalama'] > $memper[1]['harga']?'cent':'currency'; 
+									?>">
+									<span><?= rupiah($memper[1]['hargalama']);?></span>
+								</span><br>
+									<span id="garistiga">
+								<?php 
+										if( $memper[1]['hargalama'] > $memper[1]['harga'] ) : ?>
+                                    	<span class="currency"><?= rupiah($memper[1]['harga']);?></span>
+										<?php
+										endif; 
+								?>
+									</span>
+                                    <!-- <span class="currency">145</span>
+									<span class="cent">.000</span> -->
 									<br>
                                     <span class="month">/Hrs</span>
                                 </span>
@@ -821,7 +853,7 @@ $gambar2 = query("SELECT * FROM gallery");
                             	<!--HEAD START-->
                                 <div class="head_bg"></div>
                                 <div class="head">
-                                    <span>Weekly Membership</span>
+                                    <span><?= $memper[2]['judul'];?></span>
                                 </div>
                                 <!--//HEAD END-->
                                 
@@ -831,9 +863,22 @@ $gambar2 = query("SELECT * FROM gallery");
                             <!--PRICE START-->
                             <div class="generic_price_tag clearfix">	
                                 <span class="price">
-                                    <span class="sign">Rp.</span>
-                                    <span class="currency">1.250</span>
-                                    <span class="cent">.000</span>
+								<span id="garisdua" class="<?=
+									$memper[2]['hargalama'] > $memper[2]['harga']?'cent':'currency'; 
+									?>">
+									<span><?= rupiah($memper[2]['hargalama']);?></span>
+									</span><br>
+									<span id="garistiga">
+									<?php 
+										if( $memper[2]['hargalama'] > $memper[2]['harga'] ) : ?>
+                                    	<span class="currency"><?= rupiah($memper[2]['harga']);?></span>
+										<?php
+										endif; 
+									?>
+									</span>
+								
+                                    <!-- <span class="currency">1.250</span>
+                                    <span class="cent">.000</span> -->
                                     <span class="month">/Week</span>
                                 </span>
                             </div>
@@ -880,7 +925,7 @@ $gambar2 = query("SELECT * FROM gallery");
                             	<!--HEAD START-->
                                 <div class="head_bg"></div>
                                 <div class="head">
-                                    <span>Monthly Membership</span>
+                                    <span><?= $memper[3]['judul'];?></span>
                                 </div>
                                 <!--//HEAD END-->
                                 
@@ -890,9 +935,21 @@ $gambar2 = query("SELECT * FROM gallery");
                             <!--PRICE START-->
                             <div class="generic_price_tag clearfix">	
                                 <span class="price">
-                                    <span class="sign">Rp.</span>
-                                    <span class="currency">4.000</span>
-                                    <span class="cent">.000</span>
+								<span id="garisdua" class="<?=
+									$memper[3]['hargalama'] > $memper[3]['harga']?'cent':'currency'; 
+									?>">
+									<span><?= rupiah($memper[3]['hargalama']);?></span>
+								</span><br>
+									<span id="garistiga">
+								<?php 
+										if( $memper[3]['hargalama'] > $memper[3]['harga'] ) : ?>
+                                    	<span class="currency"><?= rupiah($memper[3]['harga']);?></span>
+										<?php
+										endif; 
+								?>
+									</span>
+                                    <!-- <span class="currency">4.000</span>
+                                    <span class="cent">.000</span> -->
                                     <span class="month">/Mon</span>
                                 </span>
                             </div>

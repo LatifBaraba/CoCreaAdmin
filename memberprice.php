@@ -10,23 +10,10 @@ if(!isset($_SESSION["login"])){
 require 'function.php';
 
 $g = query("SELECT * FROM logo ORDER BY id DESC LIMIT 1");
-if (isset($_POST["submit"])){
 
-        // cek apakah data ditambahkan atau tidak
-        if(tambah($_POST)> 0){
-            // echo "<script>
-            //      alert('data berhasil ditambahkan!');
-            //      document.location.href = 'index-admin.php';
-            //      </script>";
-            $_SESSION["logoberhasil"] = 1;
-        }else{
-            // echo "<script>
-            //      alert('data gagal ditambahkan!');
-            //      document.location.href = 'index-admin.php';
-            //       </script>";
-            $_SESSION["logogagal"] = 1;
-        }
-    }
+$a = query("SELECT * FROM memberprice");
+// var_dump($a);
+
 ?>
 
 
@@ -59,15 +46,15 @@ if (isset($_POST["submit"])){
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                
                 <?php if(isset($_SESSION['userlogin'])){ ?>
                     <a class='navbar-brand' href='index-user.php'><img src='./assets/img/<?php echo $g[0]['gambar']?>' id='logo' width='50'></a>
                 <?php }?> 
 
                 <?php if(!isset($_SESSION['userlogin'])){ ?>
                     <a class='navbar-brand' href='index-admin.php'><img src='./assets/img/<?php echo $g[0]['gambar']?>' id='logo' width='50'></a>
-                <?php }?> 
+                <?php }?>
                 
-                <!-- <img src="assets/img/logonew.png" alt="..." class="img-thumbnail"> -->
             </div>
 
             <div class="header-right">
@@ -125,7 +112,7 @@ if (isset($_POST["submit"])){
                             </li>
                         </ul>
                     </li>
-
+                    
                     <?php if(!isset($_SESSION['login']))
                     echo " <li>
                     <a href='login.php'><i class='fa fa-sign-in'></i>Login Page</a>
@@ -143,110 +130,101 @@ if (isset($_POST["submit"])){
        
         <!-- /. NAV SIDE  -->
 
-
+        
         <div id="page-wrapper">
             <div id="page-inner">
-                <div class="row">
+                <div class="row ">
                     <div class="col-md-12">
-                        <h1 class="page-head-line">UPDATE LOGO SECTION </h1>
+                        <!-- <h1 class="page-head-line">CO CREATIVE ADMIN SITE</h1> -->
+                        <h3 class="page-head-line">Membership & Price</h3>
                     </div>
-                </div>
-                <!-- /. ROW  -->
-                <!-- UPDATE LOGO -->
-
-            <div class="container">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-
-                    <?php 
-                    if( isset($_SESSION["logoberhasil"]) == 1 ) : ?>
-                        <div class="alert alert-success" role="alert">Success added logo <a href="index-admin.php" class="alert-link">back to Dashboard</a>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>    
-                        </div>
-                <?php
-                endif; 
-                    unset($_SESSION['logoberhasil']);
-                ?>
-                
-                <?php 
-                    if( isset($_SESSION["logogagal"]) == 1 ) : ?>
-                        <div class="alert alert-danger" role="alert">Failed added logo
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>    
-                        </div>
-                <?php
-                endif; 
-                    unset($_SESSION['logogagal']);
-                ?>
-
-                <?php 
-                    if( isset($_SESSION["uploadbukangambar"]) == 1 ) : ?>
-                        <div class="alert alert-danger" role="alert"><strong>Please upload a picture</strong> format (jpg, jpeg or png)
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>    
-                        </div>
-                <?php
-                endif; 
-                    unset($_SESSION['uploadbukangambar']);
-                ?>
-                
-
-                <?php 
-                    if( isset($_SESSION["uploadgambardulu"]) == 1 ) : ?>
-                        <div class="alert alert-danger" role="alert"><strong>Please upload a picture</strong>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>    
-                        </div>
-                <?php
-                endif; 
-                    unset($_SESSION['uploadgambardulu']);
-                ?>
-
-                <?php 
-                    if( isset($_SESSION["logoterlalubesar"]) == 1 ) : ?>
-                        <div class="alert alert-danger" role="alert"><strong>Picture size to large</strong> | under 2mb
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>    
-                        </div>
-                <?php
-                endif; 
-                    unset($_SESSION['logoterlalubesar']);
-                ?>
-                        
-                        <span class="input-group-text"></span>
-                  
-                    </div>    
-                
-                <form action="" enctype="multipart/form-data" method="post">
-
-                <!-- <div class="fileUpload btn btn-info"> -->
-                    <div class="upload-btn">
-                        <label><span>Choose file</span>            
-                            <input type="file" name="gambar" id="gambar" class="upload-btn" required>
-                        <!-- <label for="file">Choose a file</label> -->
-                        </label>
-                <!-- </label> -->
-                    </div>
-                    <button class="btn btn-success btn-logosubmit" type="submit" name="submit">Upload Data</button>
-                </div>
-                <br>
-                <p style="font-style: italic; color: gray;">Picture size : under 2mb</p>
-                </form>
-
-         <!-- SAMPE SINI -->
-        </div>
+                </div> 
+            
             <!-- /. PAGE INNER  -->
+        <div class="filler-member">
+        <!-- <form action="" enctype="multipart/form-data" method="post"> -->
+         <div class="col-md-12">   
+        <div class="col-md-6">
+            <table class="table table-striped table-member">
+                <thead class="thead-user">
+                    <th>Member & Price 1</th>
+                </thead>
+                        <tr>    <td><?php echo $a[0]['judul'];?></td>     </tr>
+                        <tr>    <td><?php echo rupiah($a[0]['hargalama']);?></td>     </tr>
+                        <tr>    <td><?php echo rupiah($a[0]['harga']);?></td>     </tr>
+                        <tr>    <td><?php echo $a[0]['diskon'];?> %</td>     </tr>
+                        <tr>    <td><?php echo $a[0]['fitur1'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[0]['fitur2'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[0]['fitur3'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[0]['fitur4'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[0]['fitur5'];?></td>     </tr>
+            </table>
+            <button class="btn btn-info" onclick="location.href='editmemberprice.php?id=<?php echo $a[0]['id'];?>'"><i class="fa fa-edit"></i> edit</button>
         </div>
+
+        <div class="col-md-6">
+            <table class="table table-striped table-member">
+                <thead class="thead-user">
+                    <th>Member & Price 2</th>
+                </thead>
+                        <tr>    <td><?php echo $a[1]['judul'];?></td>     </tr>
+                        <tr>    <td><?php echo rupiah($a[1]['hargalama']);?></td>     </tr>
+                        <tr>    <td><?php echo rupiah($a[1]['harga']);?></td>     </tr>
+                        <tr>    <td><?php echo $a[1]['diskon'];?> %</td>     </tr>
+                        <tr>    <td><?php echo $a[1]['fitur1'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[1]['fitur2'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[1]['fitur3'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[1]['fitur4'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[1]['fitur5'];?></td>     </tr>
+            </table>
+            <button class="btn btn-info" onclick="location.href='editmemberprice.php?id=<?php echo $a[1]['id'];?>'"><i class="fa fa-edit"></i> edit</button>
+        </div>
+        </div>
+        <div class="col-md-12">
+        <div class="col-md-6">
+            <table class="table table-striped table-member">
+                <thead class="thead-user">
+                    <th>Member & Price 3</th>
+                </thead>
+                        <tr>    <td><?php echo $a[2]['judul'];?></td>     </tr>
+                        <tr>    <td><?php echo rupiah($a[2]['hargalama']);?></td>     </tr>
+                        <tr>    <td><?php echo rupiah($a[2]['harga']);?></td>     </tr>
+                        <tr>    <td><?php echo $a[2]['diskon'];?> %</td>     </tr>
+                        <tr>    <td><?php echo $a[2]['fitur1'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[2]['fitur2'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[2]['fitur3'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[2]['fitur4'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[2]['fitur5'];?></td>     </tr>
+            </table>
+            <button class="btn btn-info" onclick="location.href='editmemberprice.php?id=<?php echo $a[2]['id'];?>'"><i class="fa fa-edit"></i> edit</button>
+        </div>
+            
+        <div class="col-md-6">
+            <table class="table table-striped table-member">
+                <thead class="thead-user">
+                    <th>Member & Price 4</th>
+                </thead>
+                        <tr>    <td><?php echo $a[3]['judul'];?></td>     </tr>
+                        <tr>    <td><?php echo rupiah($a[3]['hargalama']);?></td>     </tr>
+                        <tr>    <td><?php echo rupiah($a[3]['harga']);?></td>     </tr>
+                        <tr>    <td><?php echo $a[3]['diskon'];?> %</td>     </tr>
+                        <tr>    <td><?php echo $a[3]['fitur1'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[3]['fitur2'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[3]['fitur3'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[3]['fitur4'];?></td>     </tr>
+                        <tr>    <td><?php echo $a[3]['fitur5'];?></td>     </tr>
+            </table>
+            <button class="btn btn-info" onclick="location.href='editmemberprice.php?id=<?php echo $a[3]['id'];?>'"><i class="fa fa-edit"></i> edit</button>
+        </div>
+        </div>
+        <!-- </form> -->
+        </div>
+
+        </div>
+        
         <!-- /. PAGE WRAPPER  -->
     </div>
     <!-- /. WRAPPER  -->
-
     <div id="footer-sec">
         &copy; 2014 YourCompany | Design By : <a href="http://www.binarytheme.com/" target="_blank">BinaryTheme.com</a>
     </div>

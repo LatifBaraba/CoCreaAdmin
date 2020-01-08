@@ -66,7 +66,7 @@ function register($data) {
 //----------------------------------------
 function adduser($data){
 
-    global $conn;
+  global $conn;
   // ambil data dari tiap elemen dalam form
   $username = htmlspecialchars($data["username"]);
   $email = htmlspecialchars($data["email"]);
@@ -150,15 +150,14 @@ function edituser($data) {
     $email = htmlspecialchars($data["email"]);
     $alamat = htmlspecialchars($data["alamat"]);
     $telepon = htmlspecialchars($data["telepon"]);
-    $password = mysqli_real_escape_string($conn, $data["password"]);
+    // $password = mysqli_real_escape_string($conn, $data["password"]);
 
         // query insert data
     $query = "UPDATE user SET
                 username = '$username',
                 email = '$email',
                 alamat = '$alamat',
-                telepon = '$telepon',
-                password = '$password'
+                telepon = '$telepon'
             WHERE id = '$id';
     ";
     mysqli_query($conn,$query);
@@ -534,4 +533,57 @@ function kirimemail($post){
     }
 }
 
+function editmemberprice($pricenew){
+        global $conn;
+
+        $id = $_POST["id"];
+        
+        // ambil data dari tiap elemen dalam form
+        $judul = htmlspecialchars($_POST["judul"],ENT_QUOTES);
+        $hargalama = htmlspecialchars($_POST["hargalama"], ENT_QUOTES);
+        $diskon = htmlspecialchars($_POST["diskon"], ENT_QUOTES);
+        $fitur1 = htmlspecialchars($_POST["fitur1"], ENT_QUOTES);
+        $fitur2 = htmlspecialchars($_POST["fitur2"], ENT_QUOTES);
+        $fitur3 = htmlspecialchars($_POST["fitur3"], ENT_QUOTES);
+        $fitur4 = htmlspecialchars($_POST["fitur4"], ENT_QUOTES);
+        $fitur5 = htmlspecialchars($_POST["fitur5"], ENT_QUOTES);
+        
+        // query insert data
+        $query = "UPDATE memberprice SET
+                    judul = '$judul',
+                    hargalama = '$hargalama',
+                    harga = '$pricenew',
+                    diskon = '$diskon',
+                    fitur1 = '$fitur1',
+                    fitur2 = '$fitur2',
+                    fitur3 = '$fitur3',
+                    fitur4 = '$fitur4',
+                    fitur5 = '$fitur5'
+                WHERE id = '$id';
+        ";
+        // var_dump($query);
+        mysqli_query($conn,$query);
+    
+        // var_dump($judul);
+        // var_dump($query);
+    
+        return mysqli_affected_rows($conn);
+    }
+
+function diskon(){
+
+    $hargalama = $_POST['hargalama'];
+    $diskon = $_POST['diskon'];
+
+    $hasil_diskon = (($diskon / 100) * $hargalama);
+    $result = $hargalama - $hasil_diskon;
+    return $result;
+}
+
+function rupiah($angka){
+
+    $hasil_rupiah = "Rp " . number_format($angka, 0,'.','.');
+    return $hasil_rupiah;
+
+}
 ?>

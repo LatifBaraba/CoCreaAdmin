@@ -97,17 +97,23 @@ $gambar = query("SELECT * FROM slider");
                     </li>
 
                     <li>
-                        <a href="#"><i class="fa fa-camera "></i>Gallery <span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-camera"></i>Gallery <span class="fa arrow"></span></a>
                          <ul class="nav nav-second-level">
                             <li>
-                                <a href="gallery.php"><i class="fa fa-picture-o"></i>Update Album 'Our Space'</a>
+                                <a href="gallery.php"><i class="fa fa-picture-o"></i>Update Album</a>
                             </li>
-                            <!-- <li>
-                               <a href="profilepicture.html"><i class="fa fa-user"></i>Update Your Profile Picture</a> 
-
-                            </li>  -->
                         </ul>
                     </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-tags "></i>Products <span class="fa arrow"></span></a>
+                         <ul class="nav nav-second-level">
+                            <li>
+                                <a href="memberprice.php"><i class="fa fa-money"></i>Member & Price</a>
+                            </li>
+                        </ul>
+                    </li>
+                    
                     <?php if(!isset($_SESSION['login']))
                     echo " <li>
                     <a href='login.php'><i class='fa fa-sign-in'></i>Login Page</a>
@@ -142,7 +148,7 @@ $gambar = query("SELECT * FROM slider");
                 <div class="card text-center card-c" style="width: 100%;">
                     <img class="card-img-top" src="assets/img/slider/<?= $gambar[0]['gambar'];?>" alt="Card image cap">
                     <div class="card-body">
-                        <h4 class="card-title"><?= $gambar[0]['judul'];?></h4>
+                        <h5 class="card-title"><?= $gambar[0]['judul'];?></h5>
                         <p class="card-text"><?= $gambar[0]['paragraf'];?></p>
                     </div>
                     <div class="card-footer footcard">
@@ -154,7 +160,7 @@ $gambar = query("SELECT * FROM slider");
                 <div class="card text-center card-c" style="width: 100%;">
                     <img class="card-img-top" src="assets/img/slider/<?= $gambar[1]['gambar'];?>" alt="Card image cap">
                     <div class="card-body">
-                        <h4 class="card-title"><?= $gambar[1]['judul'];?></h4>
+                        <h5 class="card-title"><?= $gambar[1]['judul'];?></h5>
                         <p class="card-text"><?= $gambar[1]['paragraf'];?></p>
                     </div>
                     <div class="card-footer">
@@ -166,7 +172,7 @@ $gambar = query("SELECT * FROM slider");
                 <div class="card text-center card-c" style="width: 100%;">
                     <img class="card-img-top" src="assets/img/slider/<?= $gambar[2]['gambar'];?>" alt="Card image cap">
                     <div class="card-body">
-                        <h4 class="card-title"><?= $gambar[2]['judul'];?></h4>
+                        <h5 class="card-title"><?= $gambar[2]['judul'];?></h5>
                         <p class="card-text"><?= $gambar[2]['paragraf'];?></p>
                     </div>
                     <div class="card-footer">

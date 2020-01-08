@@ -1127,10 +1127,14 @@ ul.external li a:hover {
 
 #generic_price_table .generic_content .generic_head_price{
     background-color: #f6f6f6;
+    height: 260px;
+    width: 100%;
 }
 
 #generic_price_table .generic_content .generic_head_price .generic_head_content .head_bg{
     border-color: #e4e4e4 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #e4e4e4;
+    width: 100%;
+    height: 120px;
 }
 
 #generic_price_table .generic_content .generic_head_price .generic_head_content .head span{
@@ -1196,6 +1200,28 @@ ul.external li a:hover {
     padding: 28px 0;
 }
 
+#garisdua {
+    position: relative;
+    display: inline-block;
+}
+#garisdua::before, #garisdua::after {
+    content: '';
+    width: 100%;
+    position: absolute;
+    right: 0;
+    top: 50%;
+}
+#garisdua::before {
+    border-bottom: 2px solid #878787;
+    -webkit-transform: skewY(-10deg);
+    transform: skewY(-10deg);
+}
+#garisdua::after {
+    border-bottom: 2px solid #878787;
+    -webkit-transform: skewY(10deg);
+    transform: skewY(10deg);
+}
+
 /*PRICE BODY CODE START*/
 
 #generic_price_table .generic_content{
@@ -1252,7 +1278,7 @@ ul.external li a:hover {
 
 #generic_price_table .generic_content .generic_head_price .generic_price_tag .price .currency{
     font-family: "Lato",sans-serif;
-    font-size: 60px;
+    font-size: 40px;
     font-weight: 300;
     letter-spacing: -2px;
     line-height: 60px;
