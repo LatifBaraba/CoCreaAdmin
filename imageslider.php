@@ -12,7 +12,6 @@ require 'function.php';
 $g = query("SELECT * FROM logo ORDER BY id DESC LIMIT 1");
 
 $gambar = query("SELECT * FROM slider");
-
 // var_dump($gambar);
 
 ?>

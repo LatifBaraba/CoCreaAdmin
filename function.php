@@ -249,7 +249,7 @@ function uploadgambar(){
             //     alert('upload gambar dahulu');    
             // </script>";
             
-            $_SESSION['upload']=1;
+            $_SESSION['upload'] = 1;
 
             return false;
     }  
